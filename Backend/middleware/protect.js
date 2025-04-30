@@ -5,7 +5,7 @@ dotenv.config();
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.status(401).json({ message: "Access Denied,UnAuthorised" });
+    return res.status(401).json({ message: "Access Denied,Unauthorised" });
   }
 
   try {
