@@ -65,7 +65,7 @@ export const loginUser = async (req, res) => {
       httpOnly: false,
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.status(200).json({ message: "Login successful" });
+    res.status(200).json({ message: "Logged in successfully" });
   } catch (error) {
     console.log(`Error in Loggingin:`, error);
     res.status(500).json({ message: "Server error" });
