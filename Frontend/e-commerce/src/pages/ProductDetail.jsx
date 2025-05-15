@@ -1,7 +1,7 @@
 function ProductDetail() {
   return (
     <div>
-      <h1>SPecificProduct</h1>
+      <h1>SpecificProduct</h1>
     </div>
   );
 }
