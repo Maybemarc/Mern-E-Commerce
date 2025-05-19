@@ -1,19 +1,24 @@
+import FeaturedProducts from "../components/Featured_Products";
+import FollowOns from "../components/FollowOns";
 import Index from "../components/Index";
 import Navbar from "../components/Navbar";
+import OffersPage from "../components/offersPage";
+import Categories from "../components/Categories";
 
 function HomePage() {
   return (
     <div>
-    <Navbar />
-    <Index />
-    
-
+      <Navbar />
+      <Index />
+      <FeaturedProducts />
+      <OffersPage />
+      <Categories />
+      {/* <FollowOns /> */}
     </div>
   );
 }
 
 export default HomePage;
-
 
 //   const getAllProducts = async function () {
 //     try {
@@ -31,12 +36,11 @@ export default HomePage;
 //     getAllProducts();
 //   }, []);
 
-
-  // <h1>Home page</h1>
-  //     {!products ? (
-  //       <div>
-  //         <h3>No blog</h3>
-  //       </div>
-  //     ) : (
-  //       products.map((product) => <h2 key={product.id}>{product.name}</h2>)
-  //     )}
+// <h1>Home page</h1>
+//     {!products ? (
+//       <div>
+//         <h3>No blog</h3>
+//       </div>
+//     ) : (
+//       products.map((product) => <h2 key={product.id}>{product.name}</h2>)
+//     )}

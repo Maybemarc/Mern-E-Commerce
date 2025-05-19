@@ -17,9 +17,27 @@ function Index() {
           </div>
         </div>
         <div className="Index_Two">
-          <div className="Indexing Index_Image_One"></div>
-          <div className="Indexing Index_Image_Two">Captain America</div>
-          <div className="Indexing Index_Image_Three"><p>Explore Now</p></div>
+          <div className="Indexing Index_Image_One">
+             <div className="Two_Shop">
+              <strong>T-Shirt</strong>
+              <br />
+              <span>$499</span>
+            </div>
+            <span className="Two_Arrow"> &#8594;</span>
+          </div>
+          <div className="Indexing Index_Image_Two">
+            <div className="Two_Shop">
+              <strong>Hoodie</strong>
+              <br />
+              <span>$321</span>
+            </div>
+            <span className="Two_Arrow"> &#8594;</span>
+          </div>
+          <div className="Indexing Index_Image_Three">
+            <p className="Three_para_One">25% OFF</p>
+            <p className="Three_para_Two">On clothing now</p>
+            <p className="Three_para_Three">Explore Now</p>
+          </div>
         </div>
       </div>
     </div>
