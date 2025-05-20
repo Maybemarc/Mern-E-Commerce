@@ -12,7 +12,7 @@ function Categories() {
               width="50px"
               height="50px"
             />
-            <p>Shoes</p>
+            <p>Shoe</p>
             <div className="Arrow_Nav">
               <img
                 src="./src/assets/T-Shirt/right-arrow-svgrepo-com.png"
