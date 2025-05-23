@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Index() {
   return (
     <div className="Index_Box">
@@ -12,18 +14,20 @@ function Index() {
               cart, and order with ease — all from the comfort of your home.
             </p>
           </div>
-          <div className="Index_Shop_Now">
+          <Link to="/products" className="Index_Shop_Now">
             <span className="Shop_Button">Shop Now</span>
-          </div>
+          </Link>
         </div>
         <div className="Index_Two">
           <div className="Indexing Index_Image_One">
-             <div className="Two_Shop">
+            <div className="Two_Shop">
               <strong>T-Shirt</strong>
               <br />
               <span>$499</span>
             </div>
-            <span className="Two_Arrow"> &#8594;</span>
+            <Link to="/products?category=T-Shirt">
+              <span className="Two_Arrow"> &#8594;</span>
+            </Link>
           </div>
           <div className="Indexing Index_Image_Two">
             <div className="Two_Shop">
@@ -31,12 +35,16 @@ function Index() {
               <br />
               <span>$321</span>
             </div>
-            <span className="Two_Arrow"> &#8594;</span>
+            <Link to="/products?category=Hoodie">
+              <span className="Two_Arrow"> &#8594;</span>
+            </Link>
           </div>
           <div className="Indexing Index_Image_Three">
             <p className="Three_para_One">25% OFF</p>
             <p className="Three_para_Two">On clothing now</p>
-            <p className="Three_para_Three">Explore Now</p>
+            <Link to="/products" className="Three_para_Three_Link">
+              <p className="Three_para_Three">Explore Now</p>
+            </Link>
           </div>
         </div>
       </div>

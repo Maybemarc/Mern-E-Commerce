@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
-  const initialCategory = searchParams.get("category");
+  const initialCategory = searchParams.get("category");  
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -27,9 +27,10 @@ const ProductsPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/lookup");
+      const res = await axios.get("http://localhost:3000/api/lookup?limit=30");
       const uniqueCats = [...new Set(res.data.products.map((p) => p.category))];
       setCategories(uniqueCats);
+      console.log(res.data.products);
     } catch (err) {
       console.error("Error fetching categories", err);
     }
@@ -37,7 +38,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/lookup", {
+      const res = await axios.get("http://localhost:3000/api/lookup?limit=30", {
         params: {
           category: selectedCategory,
           sort: sortOrder,

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function OffersPage() {
   return (
     <div>
@@ -9,7 +11,11 @@ function OffersPage() {
           <div className="Offer_One_Content">
             <h4>New Shoe Collection</h4>
             <h2>25% OFF</h2>
-            <button className="Offer_One_Content_View_Offer">VIEW OFFER</button>
+            <Link to="/products?category=Shoe">
+              <button className="Offer_One_Content_View_Offer">
+                VIEW OFFER
+              </button>
+            </Link>
           </div>
         </div>
         <div className="Offer_Two">
@@ -17,7 +23,11 @@ function OffersPage() {
             <div className="Offer_Two_Content_Details">
               <h2>New SunGlasses Collection</h2>
               <h1>10%OFF</h1>
-              <button className="Offer_Two_Content_View_Offer">VIEW OFFER</button>
+              <Link to="/products?category=Sunglasses">
+                <button className="Offer_Two_Content_View_Offer">
+                  VIEW OFFER
+                </button>
+              </Link>
             </div>
             <div className="Offer_Two_Content_Image">
               <img
@@ -30,9 +40,13 @@ function OffersPage() {
           </div>
           <div className="Offer_Two_Content1 Color">
             <div className="Offer_Two_Content_Details">
-              <h2>New Belt Collection</h2>
+              <h2>New Watch Collection</h2>
               <h1>10%OFF</h1>
-              <button className="Offer_Two_Content_View_Offer">VIEW OFFER</button>
+              <Link to="/products?category=Watch">
+                <button className="Offer_Two_Content_View_Offer">
+                  VIEW OFFER
+                </button>
+              </Link>
             </div>
             <div className="Offer_Two_Content_Image">
               <img

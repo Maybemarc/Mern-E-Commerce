@@ -13,9 +13,9 @@ function HomePage() {
       <Index />
       <FeaturedProducts />
       <OffersPage />
-      {/* <Categories /> */}
-      {/* <FollowOns /> */}
       <Card />
+      <FollowOns />
+      {/* <Categories /> */}
     </div>
   );
 }

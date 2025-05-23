@@ -8,7 +8,9 @@ function Card() {
 
   const fetchProducts = async function () {
     try {
-      const response = await axios.get("http://localhost:3000/api/lookup");
+      const response = await axios.get(
+        "http://localhost:3000/api/lookup?limit=30"
+      );
       const result = response.data.products;
       const uniqueCategories = [...new Set(result.map((p) => p.category))];
       SetCategories(uniqueCategories);
@@ -29,19 +31,22 @@ function Card() {
       {Categories.length === 0
         ? "No category"
         : Categories.map((cat, index) => (
-            <div className="category_Types" key={cat.id}>
-              <div className={`Category_List Fill_Color${index + 1}`}>
-                <img src={Icons[index]} width="50px" height="50px" />
-                <Link to={`/products?category=${cat}`}>{cat}</Link>
-                <div className="Arrow_Nav">
-                  <img
-                    src="./src/assets/T-Shirt/right-arrow-svgrepo-com.png"
-                    width="20px"
-                    height="20px"
-                  />
+          <div className="category_Types" >
+                <Link to={`/products?category=${cat}`} key={cat.id}>
+                <div className={`Category_List Fill_Color${index + 1}`}>
+                  <img src={Icons[index]} width="50px" height="50px" />
+                  <p>{cat}</p>
+
+                  <div className="Arrow_Nav">
+                    <img
+                      src="./src/assets/T-Shirt/right-arrow-svgrepo-com.png"
+                      width="20px"
+                      height="20px"
+                    />
+                  </div>
                 </div>
+            </Link>
               </div>
-            </div>
           ))}
     </div>
   );
