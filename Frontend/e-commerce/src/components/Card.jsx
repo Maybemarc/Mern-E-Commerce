@@ -54,15 +54,4 @@ function Card() {
 
 export default Card;
 
-{
-  /* <h2>Card Page</h2>
-      <ul>
-        {!Categories
-          ? "NO"
-          : Categories.map((cat, index) => (
-              <li key={index}>
-                <Link to={`/products?category=${cat}`}>{cat}</Link>
-              </li>
-            ))}
-      </ul> */
-}
+
