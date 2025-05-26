@@ -4,22 +4,40 @@ import Login from "./components/LoginPage";
 import SignUp from "./components/SignUp";
 import ProductDetail from "./pages/ProductDetail";
 import "./App.css";
-import Cart from "./pages/cart";
+import UserCart from "./pages/UsersCart";
 import Orders from "./pages/orders";
 import ProductsPage from "./pages/productsPage";
+import Protect from "./pages/Secure/ProtectRoute";
+import { CartProvider } from "./components/Context/Cart";
 
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/ProductDetail/:id" element={<ProductDetail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/user/cart" element={<Cart />} />
-        <Route path="/user/order" element={<Orders />} />
-      </Routes>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/signUp"
+            element={
+              <Protect>
+                <SignUp />
+              </Protect>
+            }
+          />
+          <Route
+            path="/user/cart"
+            element={
+              <Protect>
+                <UserCart />
+              </Protect>
+            }
+          />
+          <Route path="/user/order" element={<Orders />} />
+        </Routes>
+      </CartProvider>
     </div>
   );
 }

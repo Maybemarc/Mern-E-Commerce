@@ -36,7 +36,6 @@ function FeaturedProducts() {
     SetCartItems((prevItems) => [...prevItems, prod]);
     console.log(`${prod.name} has been added`);
 };
-console.log(CartItems);
 
   useEffect(() => {
     fetchProducts();

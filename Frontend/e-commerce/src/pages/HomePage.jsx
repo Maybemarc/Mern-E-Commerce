@@ -6,6 +6,7 @@ import OffersPage from "../components/offersPage";
 import Categories from "../components/Categories";
 import Card from "../components/Card";
 
+
 function HomePage() {
   return (
     <div>
