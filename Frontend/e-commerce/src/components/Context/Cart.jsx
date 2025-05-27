@@ -31,6 +31,7 @@ useEffect(() => {
   }
 }, [user, loading]);
   const addCart = async (productId, quantity) => {
+    console.log(productId,quantity);
     try {
       const response = await axios.post(
         "http://localhost:3000/api/cart/add",

@@ -248,6 +248,131 @@ h1 {
   color: white;
 } 
 
+
+/*//////////////////Featured Products*/
+
+.Featured_Products{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.Featured_Products_Heading{
+  width: 100%;
+  font-size: 30px;
+}
+
+.Featured_Container{
+  border: 0.5px solid rgb(236, 235, 235);
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+
+.Featured_Container:hover{
+  transform: scale(1.1);
+  transition: 0.5s ease;
+  box-shadow: 2px 2px 10px  grey;
+}
+
+
+.Featured_Box{
+  text-align: center;
+  position: relative;
+}
+
+.percentage{
+  position: absolute;
+  right: 4%;
+  background-color: rgb(236, 235, 235);
+  border-radius: 10px;
+  padding: 5px;
+  font-family: sans-serif;
+}
+
+.Featured_Box > img{
+  /* margin-top: 2px; */
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  width: 280px;
+  transition: 0.5s ease;
+}
+
+.Featured_Links {
+  color: black;
+  text-decoration: none;
+} 
+
+.Featured_Links:hover{
+  color: black;
+}
+
+.Featured_Link_Name{
+  font-weight: bold;
+   /* margin: 0; */
+}
+
+.Featured_Link_Name_Category{
+  /* margin: 0; */
+  color: rgb(114, 114, 114);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.Price_Details{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  border-top: 1px solid rgb(236, 235, 235);
+}
+
+.Price_Content{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgb(236, 235, 235);
+}
+
+.Final_price{
+  font-weight: bold;
+   color:  rgb(94, 94, 94)
+}
+
+.Original_price{
+  font-size: 12px;
+  padding-right: 20px;
+  color:  rgb(173, 171, 171);
+}
+
+.Price_Details > button{
+  border: none;
+  background-color: transparent;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(112, 112, 112);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*///////////////Offer//////////////*/
 
 
@@ -256,6 +381,7 @@ h1 {
   grid-template-columns: 1.5fr 1fr;
   gap: 20px;
   padding: 10px;
+  padding-bottom: 30px;
   
 }
 
@@ -306,8 +432,6 @@ h1 {
   background-color: red;
   color: white;
 }
-
-
 
 .Offer_Two{
   display: grid;
@@ -422,26 +546,25 @@ h1 {
 
 /*////////////////Category///////////////////*/
 
-.Categories_Box{
-  display: flex;
-  justify-content: center;
-}
-
 .Categories_Container{
-  margin-bottom: 10px ;
-  padding: 20px ;
-  /* width: 90%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 40px;
 }
 
-.category{
-  font-size: 20px;
+.category {
+  width: 100%;
+  font-size: 40px;
+}
+
+.category > h2{
+    margin-top: 0;
 }
 
 .category_Types{
-  display: inline-flex;
-  padding: 10px;
-  justify-content: center;
-  gap: 30px;
+  display: flex;
+  padding: 0px 20px;
   flex-wrap: wrap;
 }
 
@@ -506,10 +629,48 @@ h1 {
   background-color: #f3efff;
 }
 
+/*///////////SpecificProduct/////////////*/
+
+
+.specific_Product{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.product_Image > img{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/*///////////RelatedProduct/////////////*/
+
+.Related_Header{
+  width: 100%;
+}
+
+.Related_Container{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
+.Related_Box > img{
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+
+
 /* body{
   background-image: url("./assets/icons/shirt-svgrepo-com.png");
 }
-
  */
 
 
