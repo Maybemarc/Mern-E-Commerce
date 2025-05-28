@@ -1,7 +1,7 @@
 function Orders(){
     return (
         <div>
-            <h1>orders Page</h1>
+            <h1>Orders Page</h1>
         </div>
     )
 }
