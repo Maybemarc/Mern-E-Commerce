@@ -7,7 +7,6 @@ function ProductDetail() {
   const { id } = useParams();
   const [item, SetItems] = useState();
   const [spinner, SetSpinner] = useState(true);
-  console.log(id);
 
   const SingleProduct = async () => {
     try {
