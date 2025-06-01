@@ -645,29 +645,126 @@ h1 {
 
 .product_Image > img{
   height: 500px;
-  width: 100%;
+  width: 70%;
   object-fit: cover;
 }
+
+.Specific_Product_Details{
+  text-align: start;
+}
+
+
+
+
 
 /*///////////RelatedProduct/////////////*/
 
+
+
+.Related_Products{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
 .Related_Header{
   width: 100%;
+  font-size: 30px;
 }
 
 .Related_Container{
-  display: flex;
+  border: 0.5px solid rgb(236, 235, 235);
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+
+.Related_Container:hover{
+  transform: scale(1.1);
+  transition: 0.5s ease;
+  box-shadow: 2px 2px 10px  grey;
+}
+
+.Related_Box{
+  text-align: center;
+  position: relative;
+}
+
+.Related_Box > img{
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  width: 280px;
+  transition: 0.5s ease;
+}
+
+.Related_Percentage{
+  position: absolute;
+  right: 4%;
+  background-color: rgb(236, 235, 235);
+  border-radius: 10px;
+  padding: 5px;
+  font-family: sans-serif;
+}
+
+.Related_Links{
+    color: black;
+  text-decoration: none;
+}
+
+.Related_Links:hover{
+  color: black;
+}
+
+.Featured_Link_Name{
+  font-weight: bold;
+}
+
+.Related_Link_Name_Category{
+  color: rgb(114, 114, 114);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Related_Price_Details{
+    display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
+  border-top: 1px solid rgb(236, 235, 235);
+}
+
+.Detail_Price_Content{
+    display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgb(236, 235, 235);
+}
+
+.Related_Final_Price{
+    font-weight: bold;
+   color:  rgb(94, 94, 94)
 }
 
 
+.Realted_Original_Price{
+    font-size: 12px;
+  padding-right: 20px;
+  color:  rgb(173, 171, 171);
+}
 
-.Related_Box > img{
-  height: 300px;
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+
+.Related_Price_Details > button{
+    border: none;
+  background-color: transparent;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(112, 112, 112);
 }
 
 

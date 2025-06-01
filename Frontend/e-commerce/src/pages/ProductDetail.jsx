@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Related from "../components/Related_products";
+import { useAuth } from "../components/Context/AuthProvider";
 
 function ProductDetail() {
   const { id } = useParams();
   const [item, SetItems] = useState();
   const [spinner, SetSpinner] = useState(true);
+  const { user, loading } = useAuth();
+  const { addCart } = useNavigate();
 
   const SingleProduct = async () => {
     try {
@@ -39,11 +42,25 @@ function ProductDetail() {
             <h1>{item.name}</h1>
             <h2>{item.category}</h2>
             <p> {item.description}</p>
+            <div
+              className="Cart_Content"
+              onClick={
+                !loading
+                  ? user
+                    ? () => addCart(prod._id, 1)
+                    : () => navigate("/login")
+                  : null
+              }
+            >
+              Add To Cart
+            </div>
           </div>
         </div>
       )}
 
-    {!spinner && item && <Related category={item.category} productId={item._id} />}
+      {!spinner && item && (
+        <Related category={item.category} productId={item._id} />
+      )}
     </div>
   );
 }
