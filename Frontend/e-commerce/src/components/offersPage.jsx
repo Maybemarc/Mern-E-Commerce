@@ -24,9 +24,11 @@ function OffersPage() {
               <h2>New SunGlasses Collection</h2>
               <h1>10%OFF</h1>
               <Link to="/products?category=Sunglasses">
-                <button className="Offer_Two_Content_View_Offer">
-                  VIEW OFFER
-                </button>
+                <div className="button_ViewOffer">
+                  <button className="Offer_Two_Content_View_Offer">
+                    VIEW OFFER
+                  </button>
+                </div>
               </Link>
             </div>
             <div className="Offer_Two_Content_Image">
@@ -43,9 +45,11 @@ function OffersPage() {
               <h2>New Watch Collection</h2>
               <h1>10%OFF</h1>
               <Link to="/products?category=Watch">
-                <button className="Offer_Two_Content_View_Offer">
-                  VIEW OFFER
-                </button>
+                <div className="button_ViewOffer">
+                  <button className="Offer_Two_Content_View_Offer">
+                    VIEW OFFER
+                  </button>
+                </div>
               </Link>
             </div>
             <div className="Offer_Two_Content_Image">
