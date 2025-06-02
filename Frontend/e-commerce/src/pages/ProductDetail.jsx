@@ -3,24 +3,37 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Related from "../components/Related_products";
 import { useAuth } from "../components/Context/AuthProvider";
+import { useCart } from "../components/Context/Cart";
 
 function ProductDetail() {
   const { id } = useParams();
   const [item, SetItems] = useState();
   const [spinner, SetSpinner] = useState(true);
+  const [quantity, setQuantity] = useState(1);
   const { user, loading } = useAuth();
-  const { addCart } = useNavigate();
+  const { addCart } = useCart();
+  const navigate = useNavigate();
 
   const SingleProduct = async () => {
     try {
       const response = await axios.get(
         `http://localhost:3000/api/lookup/product/${id}`
       );
-      console.log(response.data);
       SetItems(response.data.product);
       SetSpinner(false);
     } catch (error) {
       console.log(`Error in fetching SIngle Product`, error);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!loading) {
+      console.log(item._id, quantity);
+      if (user) {
+        addCart(item._id, quantity);
+      } else {
+        navigate("/login");
+      }
     }
   };
 
@@ -39,20 +52,23 @@ function ProductDetail() {
             <img src={item.imageUrl} />
           </div>
           <div className="Specific_Product_Details">
+            {console.log(item)}
             <h1>{item.name}</h1>
             <h2>{item.category}</h2>
+            <p>{item.discountPercentage}% OFF</p>
+            <p>{item.price}</p>
             <p> {item.description}</p>
-            <div
-              className="Cart_Content"
-              onClick={
-                !loading
-                  ? user
-                    ? () => addCart(prod._id, 1)
-                    : () => navigate("/login")
-                  : null
-              }
-            >
-              Add To Cart
+            <div className="Cart_Content">
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(parseInt(e.target.value))}
+                className="quantity-input"
+              />
+              <button onClick={handleAddToCart} className="add-to-cart-button">
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

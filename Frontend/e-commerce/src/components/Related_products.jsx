@@ -16,7 +16,6 @@ function Related(props) {
       const response = await axios.get(
         `http://localhost:3000/api/lookup?category=${props.category}`
       );
-      console.log(response.data.products);
       const result = response.data.products.filter(
         (c) => c._id !== props.productId
       );

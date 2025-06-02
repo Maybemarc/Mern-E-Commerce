@@ -1,137 +1,111 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useAuth } from "../components/Context/AuthProvider";
+import { useCart } from "../components/Context/Cart";
 
-const ProductsPage = () => {
+function ProductsPage() {
+  const { user, loading } = useAuth();
+  const { addCart } = useCart();
   const [searchParams] = useSearchParams();
-  const initialCategory = searchParams.get("category");  
-
+  const initialCategory = searchParams.get("category");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortOrder, setSortOrder] = useState(-1);
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    if (initialCategory) {
-      setSelectedCategory(initialCategory);
-    }
-  }, [initialCategory]);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [selectedCategory, sortOrder]);
-
-  const fetchCategories = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/api/lookup?limit=30");
-      const uniqueCats = [...new Set(res.data.products.map((p) => p.category))];
-      setCategories(uniqueCats);
-      console.log(res.data.products);
-    } catch (err) {
-      console.error("Error fetching categories", err);
-    }
-  };
+  const navigate = useNavigate()
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/lookup?limit=30", {
+      const res = await axios.get(`http://localhost:3000/api/lookup?limit=30`, {
         params: {
           category: selectedCategory,
           sort: sortOrder,
         },
       });
       setProducts(res.data.products);
-    } catch (err) {
-      console.error("Error fetching products", err);
+    } catch (error) {
+      console.log(`Error in fetchProducts: `, error);
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/lookup?limit=30");
+      const result = [...new Set(res.data.products.map((c) => c.category))];
+      setCategories(result);
+    } catch (error) {
+      console.log(`Error in fetching Categories: `, error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [selectedCategory, sortOrder]);
+
   return (
-    <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-      <div style={{ flex: 3 }}>
-        <h2>Products {selectedCategory && `in "${selectedCategory}"`}</h2>
-        {products.length === 0 ? (
-          <p>No products found.</p>
-        ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-              gap: "20px",
-            }}
-          >
-            {products.map((prod) => (
-              <div
-                key={prod._id}
-                style={{
-                  border: "1px solid #ccc",
-                  padding: "10px",
-                  borderRadius: "5px",
-                }}
-              >
-                <h4>{prod.name}</h4>
-                <p>₹{prod.price}</p>
-                <p>{prod.category}</p>
+    <div className="ProductsPage_Collection">
+      <div className="ProductsPage_Heading">
+        <h2>Products Page</h2>
+      </div>
+      <div className="ProductsPage_Container">
+        {!products
+          ? "No products"
+          : products.map((prod) => (
+              <div className="ProductsPage_Box_Content" key={prod._id}>
+                <Link
+                  to={`/productDetail/${prod._id}`}
+                  className="ProductsPage_Links"
+                >
+                  <div className="ProductsPage_Box">
+                    <p className="ProductsPage_Percentage">
+                      {prod.discountPercentage}% OFF
+                    </p>
+                    <img src={prod.imageUrl} />
+                    <p className="ProductsPage_Link_Name">{prod.name}</p>
+                    <p className="ProductsPage_Link_Name_Category">
+                      {prod.category}
+                    </p>
+                  </div>
+                </Link>
+                <div className="ProductsPage_Details">
+                  <div className="ProductsPage_Content">
+                    <p className="ProductsPage_Final_price"></p>
+                    <p
+                      className="ProductsPage_Original_price"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      {prod.price}
+                    </p>
+                  </div>
+                  <button
+                    onClick={
+                      !loading
+                        ? user
+                          ? () => addCart(prod._id, 1)
+                          : () => navigate("/login")
+                        : null
+                    }
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </div>
             ))}
-          </div>
-        )}
-      </div>
-
-      <div style={{ flex: 1 }}>
-        <h3>Filters</h3>
-
-        <div>
-          <h4>Categories</h4>
-          {categories.map((cat, idx) => (
-            <button
-              key={idx}
-              onClick={() => setSelectedCategory(cat)}
-              style={{
-                display: "block",
-                margin: "5px 0",
-                background: cat === selectedCategory ? "#444" : "#eee",
-                color: cat === selectedCategory ? "#fff" : "#000",
-                border: "none",
-                padding: "6px 12px",
-                cursor: "pointer",
-              }}
-            >
-              {cat}
-            </button>
+        <div className="ProductsPage_Box2">
+          {categories.map((cat) => (
+            <div className="ProductsPage_Category">
+              <button className="ProductsPage_Category_Button">{cat}</button>
+            </div>
           ))}
-          <button
-            onClick={() => setSelectedCategory("")}
-            style={{
-              marginTop: "10px",
-              background: "#ccc",
-              border: "none",
-              padding: "6px 12px",
-              cursor: "pointer",
-            }}
-          >
-            Clear Category
-          </button>
-        </div>
-
-        <div style={{ marginTop: "20px" }}>
-          <h4>Sort by Price</h4>
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(Number(e.target.value))}
-            style={{ padding: "6px", width: "100%" }}
-          >
-            <option value="-1">High to Low</option>
-            <option value="1">Low to High</option>
-          </select>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default ProductsPage;
