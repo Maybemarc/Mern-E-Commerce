@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../components/Context/AuthProvider";
 import { useCart } from "../components/Context/Cart";
+import FollowOns from "../components/FollowOns";
 
 function ProductsPage() {
   const { user, loading } = useAuth();
@@ -12,8 +13,8 @@ function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [sortOrder, setSortOrder] = useState(-1);
-  const navigate = useNavigate()
+  const [sortOrder, setSortOrder] = useState("");
+  const navigate = useNavigate();
 
   const fetchProducts = async () => {
     try {
@@ -39,6 +40,14 @@ function ProductsPage() {
     }
   };
 
+  const discountedPrice = (price, discounted) => price * (1 - discounted / 100);
+
+  const sortedProducts = [...products].sort((a, b) => {
+    const priceA = discountedPrice(a.price, a.discountPercentage);
+    const priceB = discountedPrice(b.price, b.discountPercentage);
+    return sortOrder === -1 ? priceB - priceA : priceA - priceB;
+  });
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -49,61 +58,106 @@ function ProductsPage() {
 
   return (
     <div className="ProductsPage_Collection">
-      <div className="ProductsPage_Heading">
-        <h2>Products Page</h2>
+      <div className="ProductsPage_Heading">{/* <h2>Products Page</h2> */}</div>
+      <div className="ProductsPage_Sorting">
+        <p>
+          Showing <strong>{products.length}</strong> Results in
+          {selectedCategory ? selectedCategory : "all"} Category
+        </p>
+
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(Number(e.target.value))}
+          className="Sort_Button"
+        >
+          <option disabled value="">
+            Sort by
+          </option>
+          <option value="-1">High to low</option>
+          <option value="1">Low to high</option>
+        </select>
       </div>
       <div className="ProductsPage_Container">
-        {!products
-          ? "No products"
-          : products.map((prod) => (
-              <div className="ProductsPage_Box_Content" key={prod._id}>
-                <Link
-                  to={`/productDetail/${prod._id}`}
-                  className="ProductsPage_Links"
-                >
-                  <div className="ProductsPage_Box">
-                    <p className="ProductsPage_Percentage">
-                      {prod.discountPercentage}% OFF
-                    </p>
-                    <img src={prod.imageUrl} />
-                    <p className="ProductsPage_Link_Name">{prod.name}</p>
-                    <p className="ProductsPage_Link_Name_Category">
-                      {prod.category}
-                    </p>
-                  </div>
-                </Link>
-                <div className="ProductsPage_Details">
-                  <div className="ProductsPage_Content">
-                    <p className="ProductsPage_Final_price"></p>
-                    <p
-                      className="ProductsPage_Original_price"
-                      style={{ textDecoration: "line-through" }}
-                    >
-                      {prod.price}
-                    </p>
-                  </div>
-                  <button
-                    onClick={
-                      !loading
-                        ? user
-                          ? () => addCart(prod._id, 1)
-                          : () => navigate("/login")
-                        : null
-                    }
+        <div className="ProductsPage_Left">
+          {!products
+            ? "No products"
+            : sortedProducts.map((prod) => (
+                <div className="ProductsPage_Box_Content" key={prod._id}>
+                  <Link
+                    to={`/productDetail/${prod._id}`}
+                    className="ProductsPage_Links"
                   >
-                    Add To Cart
-                  </button>
+                    <div className="ProductsPage_Box">
+                      <p className="ProductsPage_Percentage">
+                        {prod.discountPercentage}% OFF
+                      </p>
+                      <img src={prod.imageUrl} />
+                      <p className="ProductsPage_Link_Name">{prod.name}</p>
+                      <p className="ProductsPage_Link_Name_Category">
+                        {prod.category}
+                      </p>
+                    </div>
+                  </Link>
+                  <div className="ProductsPage_Details">
+                    <div className="ProductsPage_Content">
+                      <p className="ProductsPage_Final_price">
+                        $
+                        {discountedPrice(
+                          prod.price,
+                          prod.discountPercentage
+                        ).toFixed(0)}
+                      </p>
+                      <p
+                        className="ProductsPage_Original_price"
+                        style={{ textDecoration: "line-through" }}
+                      >
+                        {prod.price}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={
+                        !loading
+                          ? user
+                            ? () => {
+                                addCart(prod._id, 1);
+                                setTimeout(() => {
+                                  navigate("/user/cart");
+                                }, 1000);
+                              }
+                            : () => navigate("/login")
+                          : null
+                      }
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+        </div>
         <div className="ProductsPage_Box2">
+          <p>Filter By Catergories</p>
           {categories.map((cat) => (
-            <div className="ProductsPage_Category">
-              <button className="ProductsPage_Category_Button">{cat}</button>
+            <div className="ProductsPage_Category" key={cat._id}>
+              <button
+                className="ProductsPage_Category_Button"
+                onClick={() => setSelectedCategory(cat)}
+                style={{
+                  background: cat === selectedCategory ? "#444" : null,
+                  color:
+                    cat === selectedCategory ? "rgb(255, 255, 255)" : "#000",
+                }}
+              >
+                {cat}
+              </button>
             </div>
           ))}
+          <button className="Clear_All" onClick={() => setSelectedCategory("")}>
+            Clear All
+          </button>
         </div>
       </div>
+      <FollowOns />
     </div>
   );
 }
