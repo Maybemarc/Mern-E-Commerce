@@ -13,6 +13,12 @@ h1 {
   line-height: 1.1;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 /*///////////////Navbar////////////////*/
 
 .Navbar_Box{
@@ -93,10 +99,16 @@ h1 {
 
 /*//////////////////Index///////////////*/
 
+.Index_Collection{
+  display: flex;
+  justify-content: center;
+}
+
 .Index_Box{
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    width: 90%;
 }
 
 .Index_Container{
@@ -375,13 +387,19 @@ h1 {
 /*///////////////Offer//////////////*/
 
 
+.Offer_Collection{
+  display: flex;
+  justify-content: center;
+}
+
 .Offer_Container{
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 20px;
   padding: 10px;
   padding-bottom: 30px;
-  
+  width: 90%
+
 }
 
 .Offer_One{
@@ -516,8 +534,8 @@ h1 {
   gap:  50px;
   padding: 30px;
   background-color: rgb(32, 30, 30);
-  width: 90%;
-  border-radius: 20px;
+  width: 100%;
+  /* border-radius: 20px; */
 }
 
 .Follow_Content{
@@ -984,31 +1002,46 @@ h1 {
 
 /*/////////////////////////User Cart////////////////////////*/
 
+.Cart_Page_Header{
+  text-align: start;
+  padding-left: 70px;
+}
+
 .Cart_Collection{
   display: grid;
   grid-template-columns: 2fr 1fr;
+  width: 90%;
+  padding: 50px;
 }
 
 .Cart_Left{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  /* background-color: rgb(148, 148, 148); */
+  padding: 50px 10px;
+}
+
+.Cart_Header{
+  padding: 10px;
+  border-bottom: 0.5px solid rgb(241, 241, 241);
+  font-weight: bold;
 }
 
 .Cart_Product,.Cart_Quantity,.Cart_Price,.Cart_Delete{
   padding: 20px;
-
+  border-bottom: 0.5px solid rgb(241, 241, 241);
 }
 
 .Cart_Product{
   display: flex;
   gap: 10px;
+  padding-left: 100px;
 }
 
 .Cart_Details {
   display: flex;
   flex-direction: column;
   text-align: start;
+
 }
 
 .Cart_Details > p {
@@ -1026,23 +1059,116 @@ h1 {
   font-size: 12px;
 }
 
+.Range_input{
+  max-width: 40px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  text-align: center;
+  border: 1px solid #5a7f7a;
+}
+
 .Cart_Delete{
   cursor: pointer;
 }
 
 .Cart_Right{
-  background-color: rgb(250, 191, 191);
+  /* background-color: rgb(230, 230, 230); */
+  text-align: start;
+  padding-left: 10px;
+  position: relative;
+  max-height: fit-content;
+  padding-bottom: 100px;
+  padding-right: 10px;
+  border: 0.2px solid rgb(223, 223, 223);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(223, 223, 223);
+}
+
+.Cart_Total{
+  font-size: 25px;
+}
+
+.Total_Price{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.1px solid rgb(233, 231, 231);
+  padding: 0;
+  margin: 0;
+}
+
+.Total_Price > h2{
+  font-size: 0.7em;
+  padding-bottom: 20px;
+}
+
+.Total_Price > p{
+   color:  #032b2c;
+   font-size: 0.7em;
+}
+
+.Checkout{
+  width: 90%;
+  position: absolute;
+  bottom: 4%;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  background-color:     #0f3d3e;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 
+/*///////////////////Footer//////////////*/
+
+.Footer_Container{
+  background-color: rgb(231, 231, 231);
+  margin-top: 5px;
+}
+
+.Footer_Category{
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  gap: 40px;
+}
+
+.Footer_Types {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
 
 
+.Footer_Items{
+  text-align:start;
+  margin: 0;
+  padding: 0px 0px 0px 4px;
+  color: black;
+  list-style: none;
+}
 
+.Footer_Links{
+  text-decoration: none;
+}
 
+.Contact_Us> h2{
+  padding-bottom: 4px;
+  text-align: start;
+}
+.Contact_Us > p{
+  padding: 0;
+  margin: 0;
+  line-height: 33px;
+  text-align: start;
+}
 
+.Copyright{
+  padding-top: 50px;
 
-
-
+}
 
 
 

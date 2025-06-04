@@ -77,7 +77,9 @@ function Related(props) {
                 onClick={
                   !loading
                     ? user
-                      ? () => addCart(prod._id, 1)
+                      ? () => {addCart(prod._id, 1),
+                        navigate("/user/cart")
+                      }
                       : () => navigate("/login")
                     : null
                 }

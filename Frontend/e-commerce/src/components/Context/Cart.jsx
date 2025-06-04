@@ -7,7 +7,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [loader, setLoader] = useState(true);
-  const {user,loading} =useAuth()
+  const { user, loading } = useAuth();
 
   const fetchCart = async function () {
     try {
@@ -21,17 +21,17 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-useEffect(() => {
-  if (!loading) {
-    if (user) {
-      fetchCart();
-    } else {
-      setLoader(false);
+  useEffect(() => {
+    if (!loading) {
+      if (user) {
+        fetchCart();
+      } else {
+        setLoader(false);
+      }
     }
-  }
-}, [user, loading]);
+  }, [user, loading]);
+
   const addCart = async (productId, quantity) => {
-    console.log(productId,quantity);
     try {
       const response = await axios.post(
         "http://localhost:3000/api/cart/add",
@@ -49,19 +49,36 @@ useEffect(() => {
     }
   };
 
+  const updateQuantity = async (productId, quantity) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/api/cart/update/${productId}`,
+        { quantity },
+        { withCredentials: true }
+      );
+      setCart(response.data.cart);
+    } catch (error) {
+      console.log(`Error in Updating Quantity: `, error);
+    }
+  };
+
   const removeCart = async (productId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/cart/remove/${productId}`
+        `http://localhost:3000/api/cart/remove/${productId}`,
+        { withCredentials: true }
       );
       setCart(response.data.cart);
+      window.location.reload();
     } catch (error) {
       console.log(`Error in Removing to Cart: `, error);
     }
   };
 
   return (
-    <CartContext.Provider value={{ cart, addCart, removeCart, loader }}>
+    <CartContext.Provider
+      value={{ cart, addCart, removeCart, updateQuantity, fetchCart,loader }}
+    >
       {children}
     </CartContext.Provider>
   );

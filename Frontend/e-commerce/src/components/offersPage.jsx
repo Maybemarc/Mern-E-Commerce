@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function OffersPage() {
   return (
-    <div>
+    <div className="Offer_Collection" >
       <div className="Offer_Container">
         <div className="Offer_One">
           <div className="Offer_One_Image">

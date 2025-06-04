@@ -31,6 +31,7 @@ function ProductDetail() {
       console.log(item._id, quantity);
       if (user) {
         addCart(item._id, quantity);
+        navigate("/user/cart")
       } else {
         navigate("/login");
       }

@@ -9,6 +9,7 @@ import Orders from "./pages/orders";
 import ProductsPage from "./pages/productsPage";
 import Protect from "./pages/Secure/ProtectRoute";
 import { CartProvider } from "./components/Context/Cart";
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           />
           <Route path="/user/order" element={<Orders />} />
         </Routes>
+              <Footer />
       </CartProvider>
     </div>
   );
