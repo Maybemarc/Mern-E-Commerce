@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../components/Context/Cart";
 import { Link, useNavigate } from "react-router-dom";
+import FollowOns from "../components/FollowOns";
 
 function Cart() {
   const { cart, removeCart, updateQuantity, loader } = useCart();
@@ -105,7 +106,7 @@ function Cart() {
           </Link>
         </div>
       </div>
-
+      <FollowOns />
     </div>
   );
 }

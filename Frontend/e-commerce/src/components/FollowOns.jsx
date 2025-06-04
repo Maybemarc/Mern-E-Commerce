@@ -1,3 +1,8 @@
+import Payment from "../assets/T-Shirt/wallet-svgrepo-com.png"
+import FreeShipping from "../assets/T-Shirt/truck-svgrepo-com.png";
+import Contact from "../assets/T-Shirt/chat-round-svgrepo-com.png"
+import Gifts from "../assets/T-Shirt/gift-svgrepo-com.png"
+
 function FollowOns() {
   return (
     <div className="FollowOn_Box">
@@ -5,7 +10,7 @@ function FollowOns() {
         <div className="Follow_Content">
           <div className="Follow_Image">
             <img
-              src="./src/assets/T-Shirt/wallet-svgrepo-com.png"
+              src={Payment}
               width="100%"
               height="30px"
             />
@@ -21,7 +26,7 @@ function FollowOns() {
         <div className="Follow_Content">
           <div className="Follow_Image">
             <img
-              src="./src/assets/T-Shirt/truck-svgrepo-com.png"
+              src={FreeShipping}
               width="100%"
               height="30px"
             />
@@ -37,7 +42,7 @@ function FollowOns() {
         <div className="Follow_Content">
           <div className="Follow_Image">
             <img
-              src="./src/assets/T-Shirt/chat-round-svgrepo-com.png"
+              src={Contact}
               width="100%"
               height="30px"
             />
@@ -53,7 +58,7 @@ function FollowOns() {
         <div className="Follow_Content">
           <div className="Follow_Image">
             <img
-              src="./src/assets/T-Shirt/gift-svgrepo-com.png"
+              src={Gifts}
               width="100%"
               height="30px"
             />

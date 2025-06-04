@@ -10,11 +10,13 @@ import ProductsPage from "./pages/productsPage";
 import Protect from "./pages/Secure/ProtectRoute";
 import { CartProvider } from "./components/Context/Cart";
 import Footer from "./components/Footer"
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div>
       <CartProvider>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
@@ -31,9 +33,7 @@ function App() {
           <Route
             path="/user/cart"
             element={
-              <Protect>
                 <UserCart />
-              </Protect>
             }
           />
           <Route path="/user/order" element={<Orders />} />
