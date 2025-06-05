@@ -5,12 +5,18 @@ import { useAuth } from "./Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { SetUser } = useAuth();
+  const { user, SetUser, loading } = useAuth();
   const [content, SetContent] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+
+  if (!loading) {
+    if (user) {
+      navigate("/");
+    }
+  }
 
   const handleChange = function (event) {
     const { name, value } = event.target;
@@ -36,12 +42,17 @@ function Login() {
   };
 
   return (
-    <div className="Login_Collection" >
+    <div className="Login_Collection">
       <div className="Login_Container">
         <div className="Login_Welcome">
           <h1>Welcome Back</h1>
           <h3>Login to explore the products</h3>
-          <button onClick={() => navigate("/Signup")} className="Register_Redirect">New User?</button>
+          <button
+            onClick={() => navigate("/Signup")}
+            className="Register_Redirect"
+          >
+            New User?
+          </button>
         </div>
         <div className="Login_Details">
           <div className="Login_Box">
@@ -66,7 +77,9 @@ function Login() {
                   onChange={handleChange}
                   value={content.password}
                 />
-                <button className="Login_button" type="submit">Submit</button>
+                <button className="Login_button" type="submit">
+                  Submit
+                </button>
               </div>
             </form>
           </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 
-function CreateProduct() {
+function UpdateProduct() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [form, setForm] = useState({
@@ -67,4 +67,4 @@ function CreateProduct() {
   );
 }
 
-export default CreateProduct;
+export default UpdateProduct;
