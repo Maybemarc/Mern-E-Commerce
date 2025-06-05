@@ -36,11 +36,12 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
+   const { id } = req.params;
   const content = req.body;
 
   try {
     const updateProduct = await Product.findOneAndUpdate(
-      req.params.id,
+      { _id: id },
       content,
       { new: true }
     );
@@ -53,7 +54,12 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    await Product.findOneAndDelete(req.params.id);
+    const deleted = await Product.findOneAndDelete({ _id: req.params.id });
+    if (!deleted) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
     res.status(200).json({ success: true, message: "Product deleted" });
   } catch (error) {
     console.log(`Error in Deleting product :`, error);

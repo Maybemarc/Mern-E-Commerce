@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /*///////////////Navbar////////////////*/
 
 .Navbar_Box{
@@ -95,6 +96,216 @@ body {
   color: black;
   text-decoration: none;
 }
+
+
+/*///////////////////////Register//////////*/
+
+.Register_Collection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:  rgb(248, 247, 247);
+}
+
+.Register_Container{
+  padding: 30px 50px;
+  background-color:  white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #0f3d3e;
+}
+
+.Register_Header{
+  color: #0f3d3e;
+}
+
+.Register_Name{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  max-width: 700px;
+}
+
+.Register_Name > label{
+  font-size: 18px;
+  padding-bottom: 5px;
+  color: #0f3d3e;
+  font-weight: 500;
+}
+
+.Register_Name label > span{
+  color: red;
+}
+
+.Register_Name > input{
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 400px;
+  border: 0.5px solid #0f3d3e;
+  margin-bottom: 20px;
+}
+
+
+.Register_Button{
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  background-color:  #0f3d3e;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.Register_Button:hover{
+  opacity: 90%;
+  color: white;
+  background-color:  #0f3d3e;
+  transition: 0.5s ease;
+}
+
+.Login_Ridrect{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Existing_User{
+  text-align: start;
+}
+
+.Redirect_Login{
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid white;
+  color: #0f3d3e;
+  /* background-color:  #00ec76; */
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.Redirect_Login:hover{
+    background-color:  #00ec76;
+}
+
+
+/*//////////////////////////Login/////////////*/
+
+.Login_Collection{
+  margin: 10px 10px;
+}
+
+.Login_Container{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* grid-template-columns: 2fr 4fr; */
+}
+
+.Login_Welcome{
+  background-color: #4EF0D4;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  border-right: 1px solid #4EF0D4;
+  border-radius: 10px;
+  padding: 0px 40px;
+}
+
+.Login_Welcome > h1{
+  margin-bottom: 0;
+}
+
+
+.Register_Redirect{
+  font-size: 1em;
+  padding: 10px 40px;
+  border: 2px solid white;
+  border-radius: 999px;
+  background-color: transparent;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.Register_Redirect:hover {
+    background-color: white;
+  color: #4EF0D4;
+    border: 2px solid #11ffd7;
+}
+
+.Login_Details{
+  /* background-color: rgb(243, 242, 242); */
+  display: flex;
+  justify-content: center;
+
+}
+
+.Login_Box{
+  width: 400px;
+  border: 0.5px solid #edfffc;
+  box-shadow: 0px 0px 20px #c4faf1;
+  padding: 0px 30px;
+  border-radius: 10px;
+}
+.Login_Box > h2{
+  font-size: 40px;
+  color: #4EF0D4;
+}
+
+.Login_Form_Content {
+  display: flex;
+  flex-direction: column;
+}
+
+.Login_Form_Content > label{
+  text-align: start;
+  padding-bottom: 10px;
+  color: #005a4b;
+  font-weight: 500;
+}
+
+.Login_Form_Content > label> span{
+  color: red;
+}
+
+.Login_Form_Content > input{
+  padding: 10px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  border: 0.5px solid #4EF0D4;
+  margin-bottom: 20px;
+}
+
+.Login_button{
+  margin-top: 20px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  color: white;
+  background-color: #4EF0D4;
+    border: 1px solid #4EF0D4;
+  box-shadow: 0px 0px 5px rgb(206, 206, 206);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.Login_button:hover{
+    background-color: white;
+    border: 1px solid #4EF0D4;
+    color: #4EF0D4;
+  box-shadow: 0px 0px 5px;
+}
+
+
+
 
 
 /*//////////////////Index///////////////*/
@@ -1002,9 +1213,13 @@ body {
 
 /*/////////////////////////User Cart////////////////////////*/
 
+.Cart_Container{
+  background-color: rgb(249, 255, 250);
+}
+
 .Cart_Page_Header{
   text-align: start;
-  padding-left: 70px;
+  padding-left: 155px;
 }
 
 .Cart_Collection{
@@ -1017,7 +1232,7 @@ body {
 .Cart_Left{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  padding: 50px 10px;
+  padding: 0px 10px;
 }
 
 .Cart_Header{
@@ -1172,8 +1387,13 @@ body {
 
 /*////////////////////Orders/////////////////*/
 
+.Checkout_Header{
+  text-align: start;
+  padding: 20px 0px 0px 140px ;
+  /* margin: 0; */
+}
+
 .Order_Collection{
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   background-color: rgb(255, 255, 255);
@@ -1305,6 +1525,334 @@ body {
 }
 
 
+/*////////////////////Admin////////////*/
+
+ .admin-orders {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.admin-orders h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-orders-table th,
+.admin-orders-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-orders-table th {
+  background-color: #f5f5f5;
+} 
+
+/*///////////////////////All products///////////////////*/
+
+
+.admin-product-list {
+  padding: 30px;
+  max-width: 90%;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-product-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-product-list a {
+  display: inline-block;
+  background-color: #000000;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.admin-product-list a:hover {
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  color: #444;
+  font-weight: 600;
+}
+
+td {
+  color: #555;
+}
+
+td > img{
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+}
+
+.Delete_Button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d6d6d6;
+  color:white;
+}
+
+/*////////////////////CreateProduct////////////*/
+
+.create-product-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+
+/*/////////////////////////UpdateProduct//////////*/
+
+/* CreateProduct.css */
+
+.majestic-form-container {
+   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+.nebula-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(133,63,255,0.4), transparent 70%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite alternate;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  filter: blur(60px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+.majestic-form {
+  z-index: 1;
+  background: rgba(25, 25, 112, 0.95);
+  padding: 50px 40px;
+  border-radius: 30px;
+  border: 2px solid #a3bffa;
+  box-shadow: 0 0 40px rgba(173, 216, 230, 0.6);
+  width: 100%;
+  max-width: 600px;
+}
+
+.title-cosmic {
+  font-size: 2rem;
+  text-align: center;
+  background: linear-gradient(to right, #ff6ec4, #7873f5);
+  /* -webkit-background-clip: text; */
+  color: transparent;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px #c5a3ff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label-star {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #c7e0ff;
+  font-weight: 600;
+}
+
+.input-aurora {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+.input-aurora:focus {
+  outline: none;
+  border: 1px solid #00e6e6;
+  box-shadow: 0 0 10px #00e6e6;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-supernova {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px #ff7eb3;
+}
+
+.btn-supernova:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff6ec4, 0 0 15px #ff7eb3;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .admin-product-list {
+    padding: 15px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    text-align: center;
+    background-color: #eee;
+    border-bottom: none;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    margin-bottom: 10px;
+  }
+
+  td::before {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  td:nth-of-type(1)::before { content: "Name"; }
+  td:nth-of-type(2)::before { content: "Price"; }
+  td:nth-of-type(3)::before { content: "Stock"; }
+  td:nth-of-type(4)::before { content: "Actions"; }
+}
 
 
 

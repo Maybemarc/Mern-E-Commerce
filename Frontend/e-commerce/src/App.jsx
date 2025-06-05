@@ -9,8 +9,12 @@ import Orders from "./pages/orders";
 import ProductsPage from "./pages/productsPage";
 import Protect from "./pages/Secure/ProtectRoute";
 import { CartProvider } from "./components/Context/Cart";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import AdminDashboard from "./pages/admin/AdminDashboard"
+import AllProducts from "./pages/admin/AllProducts";
+import CreateProduct from "./pages/admin/CreateProduct";
+import UpdateProduct from "./pages/admin/UpdateProduct";
 
 function App() {
   return (
@@ -22,23 +26,15 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/signUp"
-            element={
-              <Protect>
-                <SignUp />
-              </Protect>
-            }
-          />
-          <Route
-            path="/user/cart"
-            element={
-                <UserCart />
-            }
-          />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/order" element={<Orders />} />
+          <Route path="/Admin" element={<AdminDashboard />} />
+          <Route path="/Admin/AllProducts" element={<AllProducts />} />
+          <Route path="/Admin/CreateProduct" element={<CreateProduct />} />
+          <Route path="/Admin/UpdateProduct/:id" element={<UpdateProduct />} />
         </Routes>
-              <Footer />
+        <Footer />
       </CartProvider>
     </div>
   );

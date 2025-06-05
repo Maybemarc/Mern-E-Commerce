@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useCart } from "../components/Context/Cart";
 import { Link, useNavigate } from "react-router-dom";
 import FollowOns from "../components/FollowOns";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Cart() {
   const { cart, removeCart, updateQuantity, loader } = useCart();
@@ -34,12 +35,14 @@ function Cart() {
   if (!cart || cart.length === 0) return <p>No products in the cart</p>;
 
   return (
-    <div>
-      <h2 className="Cart_Page_Header" >Cart Page</h2>
+    <div className="Cart_Container" >
+      <h2 className="Cart_Page_Header" >Cart</h2>
       <div className="Cart_Collection">
         {console.log(cart)}
         <div className="Cart_Left">
-          <div className="Cart_Header">Product Name</div>
+          <div className="Cart_Header">Product
+            
+          </div>
           <div className="Cart_Header">Quantity</div>
           <div className="Cart_Header">SubTotal</div>
           <div className="Cart_Header"></div>
@@ -86,7 +89,7 @@ function Cart() {
                     className="Cart_Delete"
                     onClick={() => removeCart(item.productId._id)}
                   >
-                    Delete
+                    <DeleteIcon style={{ color: 'red' }} />
                   </div>
                 </>
               ))}

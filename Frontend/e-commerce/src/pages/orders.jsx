@@ -4,6 +4,7 @@ import OrderDetails from "../components/OrderDetails";
 function Orders() {
   return (
     <div className="Order_Overall">
+      <h2 className="Checkout_Header" >Checkout</h2>
       <div className="Order_Collection">
         <div className="Order_Container">
           <div className="Order_Box1">
