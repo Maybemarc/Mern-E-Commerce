@@ -4,6 +4,7 @@ import Index from "../components/Index";
 import Navbar from "../components/Navbar";
 import OffersPage from "../components/offersPage";
 import Card from "../components/Card";
+import LoadPage from "../components/LoadPage"
 
 
 

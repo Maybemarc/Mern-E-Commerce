@@ -18,7 +18,7 @@ function Orders() {
                 <label>
                   Address <span>*</span>
                 </label>
-                <input type="text" placeholder="" required />
+                <input type="text" required />
                 <label>
                   Town / City <span>*</span>
                 </label>
@@ -26,11 +26,11 @@ function Orders() {
                 <label>
                   ZIPCODE <span>*</span>
                 </label>
-                <input type="text" placeholder="" required />
+                <input type="text" required />
                 <label>
                   Phone <span>*</span>
                 </label>
-                <input type="number" placeholder="" required />
+                <input type="number" required />
                 <label>
                   Email Address<span>*</span>
                 </label>

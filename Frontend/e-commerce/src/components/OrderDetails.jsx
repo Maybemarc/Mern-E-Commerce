@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCart } from "./Context/Cart";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "./LoadPage";
 
 function OrderDetails() {
   const { cart, loader, fetchCart } = useCart();
@@ -47,6 +48,7 @@ function OrderDetails() {
       <div className="subtotal">
         <p>Subtotal</p>
       </div>
+      {console.log(cart)}
       {cart.map((item) => (
         <>
           <div className="Order_Name_Details" key={item.productId._id}>
@@ -62,7 +64,8 @@ function OrderDetails() {
               {Math.round(
                 item.productId.price *
                   (1 - item.productId.discountPercentage / 100)
-              )}
+              )}{" "}
+              X {item.quantity}
             </p>
           </div>
         </>
@@ -80,7 +83,14 @@ function OrderDetails() {
         onClick={placeOrder}
         disabled={placingOrder}
       >
-        {placingOrder ? "Placing Order..." : "Place Your Order"}
+        {placingOrder ? (
+          <div className="Placing_Order">
+            <p>Placing Your Order...</p>
+            <Loader />
+          </div>
+        ) : 
+        "Place Your Order"
+        }
       </button>
     </>
   );

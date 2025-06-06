@@ -44,7 +44,7 @@ function ProductDetail() {
 
   return (
     <div>
-      <h1>SpecificProduct</h1>
+      <h1 className="SpecificProduct_Header" >SpecificProduct</h1>
       {spinner ? (
         <p>Loading... </p>
       ) : (

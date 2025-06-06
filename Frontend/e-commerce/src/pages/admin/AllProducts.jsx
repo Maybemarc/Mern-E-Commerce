@@ -46,18 +46,18 @@ function AllProducts() {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            {/* <th>Name</th>
             <th>Category</th>
             <th>Image</th>
             <th>Price</th>
             <th>Discount</th>
             <th>Stock</th>
-            <th>Actions</th>
+            <th>Actions</th> */}
           </tr>
         </thead>
         <tbody>
           {products.map((prod) => (
-            <tr key={prod._id}>
+            <tr key={prod._id} className="All_Row" >
               <td>{prod.name}</td>
               <td>{prod.category}</td>
               <td>

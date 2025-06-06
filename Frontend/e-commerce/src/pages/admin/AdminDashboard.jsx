@@ -72,7 +72,14 @@ function AdminDashboard() {
                 </td>
                 <td>₹{order.totalAmount}</td>
                 <td>{new Date(order.createdAt).toLocaleString()}</td>
-                <td>{order.status}</td>
+                <td
+                  style={{
+                    color: order.status === "canceled" ? "red" : "Green",
+                    fontWeight:500
+                  }}
+                >
+                  {order.status}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -5,10 +5,13 @@ export const placeOrder = async (req, res) => {
   const user = await User.findById(req.user.id).populate("cart.productId");
   if (!user.cart.length)
     return res.status(400).json({ message: "Cart is empty" });
-  const totalAmount = user.cart.reduce(
-    (acc, item) => acc + item.productId.price * item.quantity,
-    0
-  );
+
+  const totalAmount = user.cart.reduce((acc, item) => {
+    const product = item.productId;
+    const discountedPrice = product.price - (product.price * product.discountPercentage / 100);
+    return acc + (discountedPrice * item.quantity);
+  }, 0);
+
   const order = new Order({
     userId: req.user.id,
     products: user.cart,

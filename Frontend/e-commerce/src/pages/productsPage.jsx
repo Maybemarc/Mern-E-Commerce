@@ -14,8 +14,9 @@ function ProductsPage() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortOrder, setSortOrder] = useState("");
-  const [maxPrice, setMaxPrice] = useState(5000); // ✅ default max slider value
+  const [maxPrice, setMaxPrice] = useState(5000);
   const [priceLimit, setPriceLimit] = useState(5000);
+  const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
@@ -51,9 +52,7 @@ function ProductsPage() {
   const discountedPrice = (price, discounted) => price * (1 - discounted / 100);
 
   const sortedProducts = [...products]
-    .filter(
-      (p) => discountedPrice(p.price, p.discountPercentage) <= priceLimit // ✅ filter by slider
-    )
+    .filter((p) => discountedPrice(p.price, p.discountPercentage) <= priceLimit)
     .sort((a, b) => {
       const priceA = discountedPrice(a.price, a.discountPercentage);
       const priceB = discountedPrice(b.price, b.discountPercentage);
@@ -90,7 +89,14 @@ function ProductsPage() {
             <option value="-1">High to low</option>
             <option value="1">Low to high</option>
           </select>
+          <button
+            className="Mobile_Filter_Toggle"
+            onClick={() => setShowFilterDrawer(true)}
+          >
+            Filters
+          </button>
         </div>
+
         <div className="ProductsPage_Container">
           <div className="ProductsPage_Left">
             {!products
@@ -149,7 +155,17 @@ function ProductsPage() {
                   </div>
                 ))}
           </div>
-          <div className="ProductsPage_Box2">
+          <div
+            className={`ProductsPage_Box2 ${
+              showFilterDrawer ? "open-drawer" : "closed-drawer"
+            }`}
+          >
+            <button
+              className="Close_Filter_Drawer"
+              onClick={() => setShowFilterDrawer(false)}
+            >
+              ✕
+            </button>
             <p>Filter By Catergories</p>
             {categories.map((cat) => (
               <div className="ProductsPage_Category" key={cat._id}>
