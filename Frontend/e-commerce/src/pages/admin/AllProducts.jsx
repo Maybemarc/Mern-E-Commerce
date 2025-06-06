@@ -25,7 +25,7 @@ function AllProducts() {
       await axios.delete(`http://localhost:3000/api/lookup/delete/${id}`, {
         withCredentials: true,
       });
-    console.log(id);
+      console.log(id);
       fetchProducts();
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -38,8 +38,11 @@ function AllProducts() {
 
   return (
     <div className="admin-product-list">
-      <h2>All Products</h2>
-      <Link to="/Admin/CreateProduct"> Create New Product</Link>
+      <div className="All_Product_Box">
+        <h2>All Products</h2>
+        <Link to="/secure/Admin/CreateProduct" className="Create_Product" > Create New Product</Link>
+      </div>
+
       <table>
         <thead>
           <tr>
@@ -63,9 +66,14 @@ function AllProducts() {
               <td>₹{prod.price}</td>
               <td>{prod.discountPercentage}%</td>
               <td>{prod.stock}</td>
-              <td>
-                <Link to={`/Admin/updateProduct/${prod._id}`} >Edit</Link>
-                <button className="Delete_Button"  onClick={() => handleDelete(prod._id)}>🗑 Delete</button>
+              <td className="Edit_Links" >
+                <Link to={`/secure/Admin/updateProduct/${prod._id}`}>Edit</Link>
+                <button
+                  className="Delete_Button"
+                  onClick={() => handleDelete(prod._id)}
+                >
+                  🗑 Delete
+                </button>
               </td>
             </tr>
           ))}

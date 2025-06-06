@@ -1223,6 +1223,56 @@ body {
   padding-left: 155px;
 }
 
+.Cart_And_Order{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.Cart_And_Order > button{
+  margin-top: 30px;
+  padding: 10px 20px;
+  /* margin: ; */
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: rgb(102, 228, 123);
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 0.5px solid rgb(249, 255, 250);
+  cursor: pointer;
+}
+
+.Cart_And_Order > button:hover{
+  background-color: white;
+  color: rgb(102, 228, 123);
+  border: 0.5px solid white;
+  box-shadow: 0px 0px 10px rgb(102, 228, 123);
+}
+
+.No_products{
+  grid-column: span 4;
+}
+
+.No_products> button{
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: rgb(102, 228, 123);
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 0.5px solid rgb(249, 255, 250);
+  cursor: pointer;
+}
+
+.No_products> button:hover{
+    background-color: white;
+  color: rgb(102, 228, 123);
+  border: 0.5px solid white;
+  box-shadow: 0px 0px 10px rgb(102, 228, 123);
+}
+
 .Cart_Collection{
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -1334,6 +1384,45 @@ body {
   cursor: pointer;
   margin-left: 10px;
 }
+
+
+/*///////////////////////////My-orders/////////*/
+
+.MyOrders_Overall {
+  padding: 2rem;
+}
+.MyOrders_Card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+.Cancel_Button {
+  margin-top: 0.5rem;
+  background-color: #d9534f;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.Cancel_Button:hover {
+  background-color: #c9302c;
+}
+.MyOrders_Link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.MyOrders_Link:hover {
+  background-color: #45a049;
+}
+
 
 
 /*///////////////////Footer//////////////*/
@@ -1530,8 +1619,23 @@ body {
 
  .admin-orders {
   padding: 20px;
-  max-width: 1000px;
+  max-width: 90%;
   margin: auto;
+}
+
+.Admin_Products{
+  display: flex;
+  justify-content: space-between;
+}
+
+.Admin_Products a{
+  text-decoration: none;
+  color: black;
+}
+
+.Admin_Products a:hover{
+  text-decoration: none;
+  color: black;
 }
 
 .admin-orders h2 {
@@ -1565,22 +1669,56 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.All_Product_Box{
+  display: flex;
+  justify-content: space-between;
+}
+
 .admin-product-list h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
 
-.admin-product-list a {
-  display: inline-block;
+.Create_Product {
+  background-color: #00ec76;
+  color: white;
+  padding: 15px 10px 10px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.Create_Product:hover{
+  background-color: white;
+  color: #00ec76;
+  border: 1px solid #00ec76 ;
+  transition: 0.3s ease;
+  box-shadow: 0px 0px 5px #00ec76;
+
+}
+
+.Edit_Links a {
   background-color: #000000;
   color: white;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 6px;
   text-decoration: none;
   margin-bottom: 20px;
   transition: 0.3s ease;
 }
+
+.Edit_Links a:hover{
+  background-color: white;
+  color: #000000;
+  border: 1px solid #000000 ;
+  box-shadow: 0px 0px 5px #000000;
+  transition: 0.3s ease;
+}
+
+
 
 .admin-product-list a:hover {
   background-color: #ffffff;

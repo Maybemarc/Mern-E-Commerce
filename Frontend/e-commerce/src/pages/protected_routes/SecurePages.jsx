@@ -6,6 +6,7 @@ import CreateProduct from "../admin/CreateProduct";
 import UpdateProduct from "../admin/UpdateProduct";
 import UserCart from "../UsersCart";
 import Protect from "../Secure/ProtectRoute";
+import MyOrders from "../MyOrders";
 
 function SecurePages() {
   return (
@@ -16,6 +17,7 @@ function SecurePages() {
         <Routes>
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/order" element={<Orders />} />
+          <Route path="/user/my-orders" element={<MyOrders />} />
           <Route path="/Admin" element={<AdminDashboard />} />
           <Route path="/Admin/AllProducts" element={<AllProducts />} />
           <Route path="/Admin/CreateProduct" element={<CreateProduct />} />

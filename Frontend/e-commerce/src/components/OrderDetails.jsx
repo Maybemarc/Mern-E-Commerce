@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "./Context/Cart";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function OrderDetails() {
   const { cart, loader, fetchCart } = useCart();
@@ -26,7 +27,7 @@ function OrderDetails() {
       );
       fetchCart();
       setTimeout(() => {
-        navigate("/user/cart");
+        navigate("/secure/user/cart");
       }, 1000);
     } catch (error) {
       console.error("Order failed:", error);

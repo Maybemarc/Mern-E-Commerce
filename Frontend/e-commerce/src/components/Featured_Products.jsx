@@ -82,7 +82,7 @@ function FeaturedProducts() {
                     !loading
                       ? user
                         ? () => {addCart(prod._id, 1)
-                          navigate("/user/cart")
+                          navigate("/secure/user/cart")
                         }
                         : () => navigate("/login")
                       : null

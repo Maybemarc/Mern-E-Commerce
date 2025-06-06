@@ -13,6 +13,7 @@ export const placeOrder = async (req, res) => {
     userId: req.user.id,
     products: user.cart,
     totalAmount,
+    status: "completed",
   });
 
   await order.save();
@@ -41,7 +42,8 @@ export const cancelOrder = async (req, res) => {
 
 export const getUserOrders = async (req, res) => {
   try {
-    const orders = await Order.find({ userId: req.user.id }).sort({
+    const orders = await Order.find({ userId: req.user.id })
+     .populate("products.productId").sort({
       createdAt: -1,
     });
     res.status(200).json({ success: true, orders });

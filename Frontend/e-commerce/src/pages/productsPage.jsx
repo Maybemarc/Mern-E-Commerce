@@ -75,7 +75,7 @@ function ProductsPage() {
         </div>
         <div className="ProductsPage_Sorting">
           <p>
-            Showing <strong>{products.length}</strong> Results in{" "}
+            Showing <strong>{sortedProducts.length}</strong> Results in{" "}
             {selectedCategory ? selectedCategory : "all"} Category
           </p>
 
@@ -136,7 +136,7 @@ function ProductsPage() {
                               ? () => {
                                   addCart(prod._id, 1);
                                   setTimeout(() => {
-                                    navigate("/user/cart");
+                                    navigate("/secure/user/cart");
                                   }, 1000);
                                 }
                               : () => navigate("/login")
@@ -168,7 +168,11 @@ function ProductsPage() {
             ))}
             <button
               className="Clear_All"
-              onClick={() => setSelectedCategory("")}
+              onClick={() => {
+                setSelectedCategory("");
+                setPriceRange(5000);
+                setSortOrder("");
+              }}
             >
               Clear All
             </button>
@@ -179,12 +183,12 @@ function ProductsPage() {
               <input
                 type="range"
                 id="price-slider"
-                min="0"
+                min="100"
                 max={Math.ceil(maxPrice)}
                 step="100"
                 value={priceLimit}
                 onChange={(e) => setPriceLimit(Number(e.target.value))}
-                style={{ width: "100%" }}
+                style={{ width: "100%", accentColor: "green" }}
               />
             </div>
           </div>

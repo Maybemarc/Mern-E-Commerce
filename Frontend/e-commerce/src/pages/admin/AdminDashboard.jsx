@@ -3,21 +3,27 @@ import { useAuth } from "../../components/Context/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function AdminDashboard(){
-const { user } = useAuth();
+function AdminDashboard() {
+  const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/orders/all-orders", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          "http://localhost:3000/api/orders/all-orders",
+          {
+            withCredentials: true,
+          }
+        );
         console.log(res.data.orders);
         setOrders(res.data.orders);
       } catch (err) {
-        console.error("Error fetching orders:", err.response?.data || err.message);
+        console.error(
+          "Error fetching orders:",
+          err.response?.data || err.message
+        );
       } finally {
         setLoading(false);
       }
@@ -31,12 +37,11 @@ const { user } = useAuth();
   return (
     <div className="admin-orders">
       <div className="Admin_Products">
-        <Link to="/Admin/AllProducts" >
-        All Products List
+        <h2>All Orders</h2>
+        <Link to="/secure/Admin/AllProducts">
+          <h2>All Products List</h2>
         </Link>
-        </div>
-      <h2>All Orders</h2>
-
+      </div>
       {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
@@ -49,6 +54,7 @@ const { user } = useAuth();
               <th>Items</th>
               <th>Total</th>
               <th>Placed On</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -66,6 +72,7 @@ const { user } = useAuth();
                 </td>
                 <td>₹{order.totalAmount}</td>
                 <td>{new Date(order.createdAt).toLocaleString()}</td>
+                <td>{order.status}</td>
               </tr>
             ))}
           </tbody>
@@ -75,4 +82,4 @@ const { user } = useAuth();
   );
 }
 
-export default AdminDashboard
+export default AdminDashboard;
