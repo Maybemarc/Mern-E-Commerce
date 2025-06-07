@@ -128,11 +128,3 @@ function Cart() {
 }
 
 export default Cart;
-
-// {cart.map((item) => (
-//   <div>
-//     <p>{item.productId.name}</p>
-//     <p>{item.quantity}</p>
-//     <img src={item.productId.imageUrl} />
-//   </div>
-// ))}
