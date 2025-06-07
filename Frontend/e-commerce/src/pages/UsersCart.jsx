@@ -37,7 +37,7 @@ function Cart() {
   return (
     <div className="Cart_Container">
       <div className="Cart_And_Order">
-        <h2 className="Cart_Page_Header">Cart</h2>
+        <h2 className="Cart_Page_Header">Your Cart 🛒</h2>
         <button onClick={() => navigate("/secure/user/my-orders")}>
           Your Orders
         </button>

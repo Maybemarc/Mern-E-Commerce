@@ -56,7 +56,7 @@ function CreateProduct() {
           </div>
         ))}
         <button className="submit-button" type="submit">
-          ➕ Create Product
+           Create Product
         </button>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
@@ -8,6 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, SetUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
 
   const checkUser = async function () {
     const token = Cookies.get("token");
@@ -28,6 +30,11 @@ export const AuthProvider = ({ children }) => {
         "Error in Checking User: ",
         error.response?.data || error.message
       );
+      alert(error.response?.data.message || error.message)
+      Cookies.remove("token");
+      SetUser(null);
+      navigate("/login")
+      
     }
   };
 
