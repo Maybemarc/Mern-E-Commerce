@@ -22,36 +22,32 @@ body {
 
 /*///////////////Navbar////////////////*/
 
-.Navbar_Box{
+/* Structure */
+.Navbar_Box {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
-.Navbar_container{
+.Navbar_container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 80%;
-  gap: 20px;
+  padding: 10px 0;
 }
 
-.Left_Nav{
-  display: flex;
-  gap: 0;
-}
-
-.Left_logo{
+.Left_logo {
   height: 80px;
 }
 
-.Right_Nav{
+.Right_Nav {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-.Search_Bar > input{
+.Search_Bar > input {
   border-radius: 10px;
   border: none;
   width: 400px;
@@ -60,41 +56,125 @@ body {
   color: grey;
 }
 
-.Search_Bar > input:focus{
-  border: none;
+.Search_Bar > input:focus {
   outline: none;
   background-color: #0000000d;
 }
 
-.Search_Bar > input::placeholder{
+.Search_Bar > input::placeholder {
   color: #56637080;
 }
 
-.Nav_Components{
+.Nav_Components {
   display: flex;
   justify-content: space-between;
   width: 80%;
-  gap: 20px;
   border-bottom: 1px solid grey;
+  padding: 10px 0;
 }
 
-.Component_Box_One, .Component_Box_Two{
+.Component_Box_One, .Component_Box_Two {
   display: flex;
   gap: 30px;
 }
 
-.Component_One > h2{
+.Component_One > h2 {
   font-size: 14px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.Component_Link{
+.Component_Link {
   text-decoration: none;
+  color: inherit;
 }
 
-.Component_Link:hover{
+.Component_Link:hover {
+  color: black;
+}
+
+.Component_One a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.Component_One a:hover {
   color: black;
   text-decoration: none;
+  color: inherit;
+}
+
+.Component_One{
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.close-btn {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.drawer-links a {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+}
+
+.drawer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .desktop-only {
+    display: none ;
+  }
+  .hamburger-icon {
+    display: block;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  } to {
+    transform: translateX(0);
+  }
 }
 
 
@@ -190,7 +270,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 .Register_Button{
   margin-top: 10px;
   width: 100%;
@@ -227,13 +306,52 @@ body {
   border-radius: 20px;
   border: 1px solid white;
   color: #0f3d3e;
-  /* background-color:  #00ec76; */
   cursor: pointer;
   transition: 0.5s ease;
 }
 
 .Redirect_Login:hover{
     background-color:  #00ec76;
+}
+
+@media(max-width:800px){
+  .Register_Name > input{
+  padding: 5px 10px;
+  border-radius: 10px;
+  max-width: 250px;
+  min-width: 150px;
+  border: 0.5px solid #0f3d3e;
+  margin-bottom: 20px;
+}
+
+}
+
+@media(max-width:480px){
+  
+    .Register_Collection{
+      height: 70vh;
+
+    }
+
+    .Register_Container{
+      width: 200px;
+      padding: 10px 20px;
+    }
+
+    .Register_Header{
+      font-size: 22px;
+    } 
+
+    .Register_Name > label{
+      font-size: 12px;
+    }
+
+     .Register_Name > input{
+      width: 150px;
+      padding: 5px 10px;
+     }
+
+
 }
 
 
@@ -1782,6 +1900,20 @@ body {
   padding-top: 50px;
 }
 
+@media(max-width:800px){
+  .Footer_Category{
+    display: flex;
+    flex-direction: column;
+    text-align: start;  
+    padding: 20px;
+  }
+
+  .Footer_Items{
+    padding: 0px;
+  }
+
+}
+
 
 /*////////////////////Orders/////////////////*/
 
@@ -2464,9 +2596,6 @@ body {
 
  @media(max-width:1200px){
 
-  .Navbar_Box{
-    display: none;
-  }
 
   .Index_Container{
   display: grid;
