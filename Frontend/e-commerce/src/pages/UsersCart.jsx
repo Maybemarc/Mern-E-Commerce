@@ -9,7 +9,6 @@ function Cart() {
   const [quantities, setQuantities] = useState({});
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const initialQuantities = {};
     cart.forEach((item) => {
@@ -18,16 +17,11 @@ function Cart() {
     setQuantities(initialQuantities);
   }, [cart]);
 
-
-
   const handleQuantityChange = async (id, value) => {
     const newQty = Math.max(1, parseInt(value));
     setQuantities((prev) => ({ ...prev, [id]: newQty }));
     await updateQuantity(id, newQty);
-    window.location.reload();
   };
-
-
 
   const subtotal = cart.reduce((acc, item) => {
     const discountedPrice = Math.round(
@@ -40,27 +34,29 @@ function Cart() {
   // if (!cart || cart.length === 0) return <p>No products in the cart</p>;
 
   return (
-    <div className="Cart_Container">
-      <div className="Cart_And_Order">
-        <h2 className="Cart_Page_Header">Your Cart 🛒</h2>
-        <button onClick={() => navigate("/secure/user/my-orders")}>
-          Your Orders
-        </button>
-      </div>
+    <div className="Cart_Overall">
+      <div className="Cart_Container">
+        <div className="Cart_And_Order">
+          <h2 className="Cart_Page_Header">Your Cart 🛒</h2>
+          <button className="Your_Order_Button" onClick={() => navigate("/secure/user/my-orders")}>
+            Your Orders
+          </button>
+        </div>
 
-      <div className="Cart_Collection">
-        <div className="Cart_Left">
-          <div className="Cart_Header">Product</div>
-          <div className="Cart_Header">Quantity</div>
-          <div className="Cart_Header">SubTotal</div>
-          <div className="Cart_Header"></div>
-          {!cart || cart.length === 0 
-            ? <div className="No_products">
-              <h2>No products found</h2>
-              <h3>Add a Product</h3>
-              <button onClick={() => navigate("/products")} >+</button>
-            </div>
-            : cart.map((item) => (
+        <div className="Cart_Collection">
+          <div className="Cart_Left">
+            <div className="Cart_Header cart1">Product</div>
+            <div className="Cart_Header cart2">Quantity</div>
+            <div className="Cart_Header cart3">SubTotal</div>
+            <div className="Cart_Header cart4"></div>
+            {!cart || cart.length === 0 ? (
+              <div className="No_products">
+                <h2>No products found</h2>
+                <h3>Add a Product</h3>
+                <button onClick={() => navigate("/products")}>+</button>
+              </div>
+            ) : (
+              cart.map((item) => (
                 <>
                   <div className="Cart_Product">
                     <img src={item.productId.imageUrl} width="20%" />
@@ -103,30 +99,32 @@ function Cart() {
                     <DeleteIcon style={{ color: "red" }} />
                   </div>
                 </>
-              ))}
-        </div>
-        <div className="Cart_Right">
-          <p className="Cart_Total">Cart Total</p>
-          <div className="Total_Price">
-            <h2>Subtotal</h2>
-            <p>₹{subtotal}</p>
+              ))
+            )}
           </div>
-          <div className="Total_Price">
-            <h2>Discount</h2>
-            <p>₹{subtotal}</p>
+          <div className="Cart_Right">
+            <p className="Cart_Total">Cart Total</p>
+            <div className="Total_Price">
+              <h2>Subtotal</h2>
+              <p>₹{subtotal}</p>
+            </div>
+            <div className="Total_Price">
+              <h2>Discount</h2>
+              <p>₹{subtotal}</p>
+            </div>
+            {!cart || cart.length === 0 ? (
+              <Link to="/products">
+                <button className="Checkout">Add a Product</button>
+              </Link>
+            ) : (
+              <Link to="/secure/user/order">
+                <button className="Checkout">Proceed to checkout</button>
+              </Link>
+            )}
           </div>
-          {!cart || cart.length === 0 ? (
-            <Link to="/products">
-              <button className="Checkout">Add a Product</button>
-            </Link>
-          ) : (
-            <Link to="/secure/user/order">
-              <button className="Checkout">Proceed to checkout</button>
-            </Link>
-          )}
         </div>
+        {/* <FollowOns /> */}
       </div>
-      <FollowOns />
     </div>
   );
 }

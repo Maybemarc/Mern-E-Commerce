@@ -1666,13 +1666,19 @@ body {
 
 /*/////////////////////////User Cart////////////////////////*/
 
+.Cart_Overall{
+  display: flex;
+  justify-content: center;
+}
+
 .Cart_Container{
-  background-color: rgb(249, 255, 250);
+  /* background-color: rgb(249, 255, 250); */
+  width: 90%;
 }
 
 .Cart_Page_Header{
   text-align: start;
-  padding-left: 155px;
+  padding-left: 50px;
 }
 
 .Cart_And_Order{
@@ -1719,7 +1725,7 @@ body {
 }
 
 .No_products> button:hover{
-    background-color: white;
+  background-color: white;
   color: rgb(102, 228, 123);
   border: 0.5px solid white;
   box-shadow: 0px 0px 10px rgb(102, 228, 123);
@@ -1729,7 +1735,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   width: 90%;
-  gap: 5px;
+  gap: 20px;
   padding: 50px;
 }
 
@@ -1850,23 +1856,78 @@ body {
 }
 
 @media(max-width:800px){
-  .Cart_Left{
+    .Cart_Left{
   display: grid;
   width: 100%;
-  /* padding: 50px; */
 }
 
 .Cart_Right{
   width: 90%;
 }
+
+  .Cart_Page_Header{
+  text-align: start;
+  padding: 25px 10px 0px 10px;
+  font-size: 14px;
 }
 
-@media(max-width:480px){
-  .Cart_Right{
-  width: 85%;
-}
+  .Cart_Collection{
+    padding: 10px;
+  }
+
+  .Cart_And_Order > button{
+  margin-top: 30px;
+  padding: 10px 10px;
 
 }
+  
+  .Cart_Left{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+
+  .cart1{
+    grid-row-start: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cart2{
+    grid-row-start: 2;
+  }
+
+  .cart3{
+    grid-row-start: 3;
+  }
+
+  .cart4{
+    grid-row-start: 4;
+  }
+
+  .Cart_Product,.Cart_Quantity,.Cart_Price,.Cart_Delete{
+  padding: 5px;
+  text-align: start;
+  border-bottom: 0.5px solid rgb(241, 241, 241);
+}
+
+ .Cart_Product{
+  flex-direction: column;
+  }
+
+  .Checkout{
+  width: 80%;
+  position: absolute;
+  bottom: 4%;
+  text-align: center;
+}
+
+
+
+}
+
+
 
 
 /*///////////////////////////My-orders/////////*/
@@ -1960,6 +2021,7 @@ body {
     font-size: 14px;
   }
 }
+
 
 
 
@@ -2116,6 +2178,27 @@ body {
   padding: 0;
 }
 
+}
+
+@media(max-width:480px){
+  .Order_Name_Details{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Order_Name_Details > img{
+    width: 70%;
+
+  }
+
+  .Order_Box2{
+  margin: 0;
+  padding: 0 ;
+}
+
+.Order_Quantity> p,.subtotal > p{
+  margin-left: 30px !important;
+}
 
 
 }
