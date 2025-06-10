@@ -44,6 +44,7 @@ export const CartProvider = ({ children }) => {
         }
       );
       setCart(response.data.cart);
+      fetchCart()
     } catch (error) {
       console.log(`Error in Adding to Cart: `, error);
     }
@@ -57,6 +58,7 @@ export const CartProvider = ({ children }) => {
         { withCredentials: true }
       );
       setCart(response.data.cart);
+      fetchCart()
     } catch (error) {
       console.log(`Error in Updating Quantity: `, error);
     }
@@ -69,7 +71,7 @@ export const CartProvider = ({ children }) => {
         { withCredentials: true }
       );
       setCart(response.data.cart);
-      window.location.reload();
+      fetchCart()
     } catch (error) {
       console.log(`Error in Removing to Cart: `, error);
     }

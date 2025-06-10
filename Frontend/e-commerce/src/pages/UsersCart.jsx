@@ -9,6 +9,7 @@ function Cart() {
   const [quantities, setQuantities] = useState({});
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const initialQuantities = {};
     cart.forEach((item) => {
@@ -17,12 +18,16 @@ function Cart() {
     setQuantities(initialQuantities);
   }, [cart]);
 
+
+
   const handleQuantityChange = async (id, value) => {
     const newQty = Math.max(1, parseInt(value));
     setQuantities((prev) => ({ ...prev, [id]: newQty }));
     await updateQuantity(id, newQty);
     window.location.reload();
   };
+
+
 
   const subtotal = cart.reduce((acc, item) => {
     const discountedPrice = Math.round(
@@ -31,7 +36,7 @@ function Cart() {
     return acc + discountedPrice * item.quantity;
   }, 0);
 
-  if (loader) return <p>Loading cart...</p>;
+  // if (loader) return <p>Loading cart...</p>;
   // if (!cart || cart.length === 0) return <p>No products in the cart</p>;
 
   return (
@@ -44,13 +49,12 @@ function Cart() {
       </div>
 
       <div className="Cart_Collection">
-        {console.log(cart)}
         <div className="Cart_Left">
           <div className="Cart_Header">Product</div>
           <div className="Cart_Header">Quantity</div>
           <div className="Cart_Header">SubTotal</div>
           <div className="Cart_Header"></div>
-          {!cart || cart.length === 0
+          {!cart || cart.length === 0 
             ? <div className="No_products">
               <h2>No products found</h2>
               <h3>Add a Product</h3>

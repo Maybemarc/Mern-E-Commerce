@@ -418,6 +418,7 @@ body {
   padding: 0px 30px;
   border-radius: 10px;
 }
+
 .Login_Box > h2{
   font-size: 40px;
   color: #4EF0D4;
@@ -453,18 +454,54 @@ body {
   border-radius: 10px;
   color: white;
   background-color: #4EF0D4;
-    border: 1px solid #4EF0D4;
+  border: 1px solid #4EF0D4;
   box-shadow: 0px 0px 5px rgb(206, 206, 206);
   cursor: pointer;
   font-weight: 500;
 }
-
 
 .Login_button:hover{
     background-color: white;
     border: 1px solid #4EF0D4;
     color: #4EF0D4;
   box-shadow: 0px 0px 5px;
+}
+
+@media(max-width:800px){
+  .Login_Container{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* grid-template-columns: 2fr 4fr; */
+}
+
+.Login_Box{
+  padding-bottom: 40px;
+}
+
+}
+
+@media(max-width:480px){
+
+  .Login_Welcome > h1{
+    font-size: 25px;
+
+  }
+
+  .Login_Welcome > h3{
+    font-size: 20px;
+  }
+
+  .Register_Redirect{
+     padding: 5px 20px;
+  }
+
+  .Login_Box{
+    width: 250px;
+  }
+
+
 }
 
 
@@ -1010,7 +1047,7 @@ body {
 }
 
 .category > h2{
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .category_Types{
@@ -1078,6 +1115,27 @@ body {
 
 .Fill_Color5{
   background-color: #f3efff;
+}
+
+@media(max-width:480px){
+  .category > h2{
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.Category_List{
+  padding-right: 70px;
+}
+
+.Category_List > img{
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.Category_List > p{
+  font-size: 18px;
+}
+
 }
 
 /*///////////SpecificProduct/////////////*/
@@ -1814,39 +1872,93 @@ body {
 /*///////////////////////////My-orders/////////*/
 
 .MyOrders_Overall {
-  padding: 2rem;
+  padding: 40px 20px;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.Checkout_Header {
+  text-align: center;
+  font-size: 28px;
+  color: #0f3d3e;
+  margin-bottom: 30px;
+}
+
+.MyOrders_List {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .MyOrders_Card {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  background: #f9f9f9;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 350px;
+  transition: transform 0.3s ease;
 }
+
+.MyOrders_Card:hover {
+  transform: scale(1.01);
+}
+
+.MyOrders_Card p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.MyOrders_Card ul {
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.MyOrders_Card li {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
 .Cancel_Button {
-  margin-top: 0.5rem;
-  background-color: #d9534f;
-  color: white;
-  padding: 5px 10px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.Cancel_Button:hover {
-  background-color: #c9302c;
-}
-.MyOrders_Link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 8px 12px;
-  background-color: #4CAF50;
+  background-color: #e74c3c;
   color: white;
-  text-decoration: none;
-  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
-.MyOrders_Link:hover {
-  background-color: #45a049;
+
+.Cancel_Button:hover {
+  background-color: #c0392b;
+}
+
+@media (max-width: 800px) {
+
+  .MyOrders_Card {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .Checkout_Header {
+    padding-left: 20px !important;
+    font-size: 24px;
+  }
+
+  .MyOrders_Card p,
+  .MyOrders_Card li {
+    font-size: 14px;
+  }
+
+  .Cancel_Button {
+    width: 100%;
+    font-size: 14px;
+  }
 }
 
 

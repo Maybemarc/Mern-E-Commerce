@@ -28,10 +28,10 @@ function ProductsPage() {
         },
       });
       setProducts(res.data.products);
-      const allDiscountedPrices = allProducts.map((p) =>
-        discountedPrice(p.price, p.discountPercentage)
-      );
-      const max = Math.max(...allDiscountedPrices, 5000);
+      // const allDiscountedPrices = allProducts.map((p) =>
+      //   discountedPrice(p.price, p.discountPercentage)
+      // );
+      const max = Math.max(100, 5000);
       setMaxPrice(max);
       setPriceLimit(max);
     } catch (error) {
@@ -186,8 +186,6 @@ function ProductsPage() {
               className="Clear_All"
               onClick={() => {
                 setSelectedCategory("");
-                setPriceRange(5000);
-                setSortOrder("");
               }}
             >
               Clear All

@@ -81,7 +81,8 @@ function FeaturedProducts() {
                   onClick={
                     !loading
                       ? user
-                        ? () => {addCart(prod._id, 1)
+                        ? () => {
+                          addCart(prod._id, 1)
                           navigate("/secure/user/cart")
                         }
                         : () => navigate("/login")
