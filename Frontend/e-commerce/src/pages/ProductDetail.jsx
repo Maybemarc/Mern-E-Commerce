@@ -28,7 +28,6 @@ function ProductDetail() {
 
   const handleAddToCart = () => {
     if (!loading) {
-      console.log(item._id, quantity);
       if (user) {
         addCart(item._id, quantity);
         navigate("/secure/user/cart")
@@ -53,7 +52,6 @@ function ProductDetail() {
             <img src={item.imageUrl} />
           </div>
           <div className="Specific_Product_Details">
-            {console.log(item)}
             <h1>{item.name}</h1>
             <h2>{item.category}</h2>
             <p>{item.discountPercentage}% OFF</p>

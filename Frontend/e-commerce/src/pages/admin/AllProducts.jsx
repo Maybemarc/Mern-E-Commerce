@@ -13,7 +13,6 @@ function AllProducts() {
           withCredentials: true,
         }
       );
-      console.log(res.data);
       setProducts(res.data.products);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -41,12 +40,11 @@ function AllProducts() {
       <div className="All_Product_Box">
         <h2>All Products</h2>
         <Link to="/secure/Admin/CreateProduct" className="Create_Product">
-          {" "}
-          Create New Product
+          <p>Create New Product</p>
         </Link>
       </div>
 
-      <table className="All_Products_Table" >
+      <table className="All_Products_Table">
         <thead>
           <tr>
             <th>Name</th>
@@ -70,13 +68,20 @@ function AllProducts() {
               <td className="td-discount">{prod.discountPercentage}%</td>
               <td className="td-stock">{prod.stock}</td>
               <td className="td-actions Edit_Links">
-                <Link to={`/secure/Admin/updateProduct/${prod._id}`}>Edit</Link>
-                <button
-                  className="Delete_Button"
-                  onClick={() => handleDelete(prod._id)}
-                >
-                  🗑 Delete
-                </button>
+                <div className="Edit_links_Content">
+                  <Link
+                    to={`/secure/Admin/updateProduct/${prod._id}`}
+                    className="AllProducts_Edit_Content"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    className="Delete_Button"
+                    onClick={() => handleDelete(prod._id)}
+                  >
+                    🗑 Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

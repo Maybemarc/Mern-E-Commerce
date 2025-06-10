@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function OffersPage() {
   return (
-    <div className="Offer_Collection" >
+    <div className="Offer_Collection">
       <div className="Offer_Container">
         <div className="Offer_One">
           <div className="Offer_One_Image">
@@ -55,7 +55,7 @@ function OffersPage() {
             <div className="Offer_Two_Content_Image">
               <img
                 className="Offer_Image"
-                src="./src/assets/T-Shirt/seeetz-5eifdK4c8lo-unsplash.jpg"
+                src="./src/assets/T-Shirt/lucas-santos-huRn8ECqADI-unsplash.jpg"
                 width="100%"
                 height="100px"
               />

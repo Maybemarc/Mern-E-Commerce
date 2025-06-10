@@ -64,7 +64,7 @@ function FeaturedProducts() {
               </Link>
               <div className="Price_Details">
                 <div className="Price_Content">
-                  <p className="Final_price">
+                  ₹<p className="Final_price">
                     {discountedPrice(
                       prod.price,
                       prod.discountPercentage

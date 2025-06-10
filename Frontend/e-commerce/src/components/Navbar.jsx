@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./Context/AuthProvider";
+import Clothify from "../assets/Logo/clothify-high-resolution-logo.png"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
@@ -18,7 +19,7 @@ function Navbar() {
           <div className="left_Nav_Box">
             <img
               className="Left_logo"
-              src="./src/assets/Logo/clothify-high-resolution-logo.png"
+              src={Clothify}
               alt="Logo"
             />
           </div>
@@ -72,7 +73,9 @@ function Navbar() {
                 Login
               </h2>
             ) : (
-              <h2>Hi</h2>
+              <h2>
+                {user.username.toUpperCase().slice(0,2)}
+              </h2>
             )}
           </div>
           <div className="Component_One">

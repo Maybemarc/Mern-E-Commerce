@@ -2028,7 +2028,7 @@ body {
 /*///////////////////Footer//////////////*/
 
 .Footer_Container{
-  background-color: #e6f1f1;
+  background-color: white;
   margin-top: 5px;
 }
 
@@ -2046,16 +2046,23 @@ body {
   padding: 0;
 }
 
+.Footer_Links{
+  text-decoration: none;
+}
+
 .Footer_Items{
   text-align:start;
   margin: 0;
   padding: 0px 0px 0px 20px;
   color: black;
   list-style: none;
+  font-weight: 500;
+  transition: 0.5s ease;
 }
 
-.Footer_Links{
-  text-decoration: none;
+.Footer_Items:hover{
+  transform: translateY(-5px);
+    transition: 0.5s ease;
 }
 
 .Contact_Us> h2{
@@ -2070,9 +2077,35 @@ body {
 }
 
 .Copyright{
-  font-size: 1px;
-  padding-top: 50px;
+    display: flex;
+    text-align: start;  
+    align-items: center;
 }
+
+.Links_Redirect{
+  display: flex;
+  margin: 0;
+  padding: 0px 0px 12px 0px;
+}
+
+.Links_Redirect a{
+  display: flex;
+  margin: 0;
+  padding: 0px 0px 12px 0px;
+  color: black;
+  text-decoration: none;
+}
+
+.Links_Redirect > a > p{
+  margin: 0;
+  padding: 0;
+  padding-left: 2px;
+}
+
+.Links_Redirect a:hover{
+  color: black;
+}
+
 
 @media(max-width:800px){
   .Footer_Category{
@@ -2084,6 +2117,12 @@ body {
 
   .Footer_Items{
     padding: 0px;
+  }
+}
+
+@media(max-width:480px){
+  .Copyright > h1 {
+    font-size: 25px;
   }
 
 }
@@ -2434,14 +2473,17 @@ body {
 }
 
 .Create_Product {
-  background-color: #00ec76;
-  color: white;
-  padding: 15px 10px 10px 10px;
+  /* background-color: #00ec76; */
+  /* color: white; */
+  background-color: white;
+  color: #00ec76;
+  padding: 0px 10px 0px 10px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
   margin-bottom: 20px;
   transition: 0.3s ease;
+  box-shadow: 0px 0px 5px #00ec76;
 }
 
 .Create_Product:hover{
@@ -2506,6 +2548,11 @@ body {
   width: 100%;
   height: 70px;
   object-fit: cover;
+}
+
+.AllProducts_Edit_Option{
+  padding: 0px;
+  margin-left: 50px;
 }
 
 .Delete_Button {
@@ -2595,6 +2642,36 @@ body {
   }
 }
 
+@media(max-width:480px){
+
+  .All_Product_Box > h2{
+    font-size: 1em;
+  }
+
+  .Create_Product{
+    padding: 5px;
+    margin-top: 10px;
+  }
+
+   .Create_Product > p{
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+  }
+
+  .Edit_links_Content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Edit_Links a {
+    padding: 2px 0px;
+    /* width: fit-content; */
+    text-align: center;
+  }
+
+}
+
 
 
 /*////////////////////CreateProduct////////////*/
@@ -2604,7 +2681,7 @@ body {
   margin: 40px auto;
   padding: 30px;
   background-color: #fdfdfd;
-   box-shadow: 0px 0px 5px #0f3d3e;
+  box-shadow: 0px 0px 5px #0f3d3e;
   border-radius: 10px;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -2612,7 +2689,7 @@ body {
 .form-title {
   text-align: center;
   margin-bottom: 25px;
- color: #0f3d3e;
+  color: #0f3d3e;
 }
 
 .product-form {
@@ -2629,12 +2706,12 @@ body {
 .form-label {
   margin-bottom: 6px;
   font-weight: 600;
- color: #0f3d3e;
+  color: #0f3d3e;
 }
 
 .form-input {
   padding: 10px;
- border: 1px solid #0f3d3e;
+  border: 1px solid #0f3d3e;
   border-radius: 6px;
   font-size: 14px;
 }
@@ -2659,6 +2736,20 @@ body {
 
 .submit-button:hover {
     background-color:  #0f3d3e;
+}
+
+@media(max-width: 800px){
+  .create-product-container {
+  max-width: 450px;
+  }
+}
+
+
+@media(max-width:480px){
+  .create-product-container {
+  max-width: 250px;
+  }
+
 }
 
 
@@ -2783,11 +2874,11 @@ body {
 
 
 
+/* 
+body{
+  background-image: url("./assets/T-Shirt/lucas-santos-huRn8ECqADI-unsplash.jpg");
+} */
 
-/* body{
-  background-image: url("./assets/icons/shirt-svgrepo-com.png");
-}
- */
 
  @media(max-width:1200px){
 
@@ -2819,10 +2910,7 @@ body {
 } 
 
 @media(max-width:800px){
-
-
-
-
+  
 .Follow_Description >p{
   /* background-color: red; */
   max-width: 150px;

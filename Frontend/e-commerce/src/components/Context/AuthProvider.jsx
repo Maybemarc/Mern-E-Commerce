@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }) => {
         "Error in Checking User: ",
         error.response?.data || error.message
       );
-      alert(error.response?.data.message || error.message)
       Cookies.remove("token");
       SetUser(null);
       navigate("/login")

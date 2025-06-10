@@ -11,8 +11,6 @@ import MyOrders from "../MyOrders";
 function SecurePages() {
   return (
     <div>
-      <h2>Hello secure</h2>
-
       <Protect>
         <Routes>
           <Route path="/user/cart" element={<UserCart />} />

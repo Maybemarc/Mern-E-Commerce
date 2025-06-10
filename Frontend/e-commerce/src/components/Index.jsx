@@ -24,7 +24,7 @@ function Index() {
               <div className="Two_Shop">
                 <strong>T-Shirt</strong>
                 <br />
-                <span>$499</span>
+                <span>₹ 499</span>
               </div>
               <Link to="/products?category=T-Shirt">
                 <span className="Two_Arrow"> &#8594;</span>
@@ -34,7 +34,7 @@ function Index() {
               <div className="Two_Shop">
                 <strong>Hoodie</strong>
                 <br />
-                <span>$321</span>
+                <span>₹ 321</span>
               </div>
               <Link to="/products?category=Hoodie">
                 <span className="Two_Arrow"> &#8594;</span>

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Footer() {
   const [Categories, SetCategories] = useState([]);
@@ -28,17 +31,37 @@ function Footer() {
           <h2>Hello</h2>
           {Categories.length === 0
             ? "NO Category"
-            : Categories.map((cat) => (
-                <Link to={`/products?category=${cat}`} key={cat._id} className="Footer_Links" >
-                    <p className="Footer_Items" >{cat}</p>
-                </Link>
+            : Categories.map((cat,index) => (
+                <div className="Footer_Links_Content" key={index}>
+                  <Link
+                    to={`/products?category=${cat}`}
+                    className="Footer_Links"
+                  >
+                    <p className="Footer_Items">{cat}</p>
+                  </Link>
+                </div>
               ))}
         </div>
         <div className="Contact_Us">
           <h2>Hello</h2>
-          <p>cat</p>
-          <p>cat</p>
-          <p>cat</p>
+          <div className="Links_Redirect">
+            <a href="mailto:surya207757@gmail.com" target="blank">
+              <EmailIcon className="Link_icon" />
+              <p> Email</p>
+            </a>
+          </div>
+          <div className="Links_Redirect">
+            <a href="https://github.com/Maybemarc" target="blank">
+              <GitHubIcon className="Link_icon" />
+              <p>GitHub</p>
+            </a>
+          </div>
+          <div className="Links_Redirect">
+            <a href="https://github.com/Maybemarc" target="blank">
+              <LinkedInIcon className="Link_icon" />
+              <p>LinkedIn</p>
+            </a>
+          </div>
         </div>
         <div className="Copyright">
           <h1>CopyRight @ {new Date().getFullYear()}</h1>

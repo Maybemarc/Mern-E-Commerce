@@ -31,7 +31,7 @@ function Card() {
       {Categories.length === 0
         ? "No category"
         : Categories.map((cat, index) => (
-          <div className="category_Types" key={cat._id} >
+          <div className="category_Types" key={index} >
                 <Link to={`/products?category=${cat}`} >
                 <div className={`Category_List Fill_Color${index + 1}`}>
                   <img src={Icons[index]} width="50px" height="50px" />

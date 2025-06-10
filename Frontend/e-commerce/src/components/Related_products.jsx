@@ -53,7 +53,6 @@ function Related(props) {
                 <p className="Related_Percentage">
                   {prod.discountPercentage}% OFF
                 </p>
-                {console.log(prod)}
                 <img src={prod.imageUrl} />
                 <p className="Featured_Link_Name">{prod.name}</p>
                 <p className="Related_Link_Name_Category"> {prod.category}</p>

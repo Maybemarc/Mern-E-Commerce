@@ -70,7 +70,6 @@ function ProductsPage() {
     <div className="ProductsPage_Overall">
       <div className="ProductsPage_Collection">
         <div className="ProductsPage_Heading">
-          {/* <h2>Products Page</h2> */}
         </div>
         <div className="ProductsPage_Sorting">
           <p>
@@ -121,7 +120,7 @@ function ProductsPage() {
                     <div className="ProductsPage_Details">
                       <div className="ProductsPage_Content">
                         <p className="ProductsPage_Final_price">
-                          $
+                          ₹
                           {discountedPrice(
                             prod.price,
                             prod.discountPercentage
@@ -167,8 +166,8 @@ function ProductsPage() {
               ✕
             </button>
             <p>Filter By Catergories</p>
-            {categories.map((cat) => (
-              <div className="ProductsPage_Category" key={cat._id}>
+            {categories.map((cat,index) => (
+              <div className="ProductsPage_Category" key={index}>
                 <button
                   className="ProductsPage_Category_Button"
                   onClick={() => setSelectedCategory(cat)}

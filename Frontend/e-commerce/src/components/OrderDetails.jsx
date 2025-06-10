@@ -48,7 +48,6 @@ function OrderDetails() {
       <div className="subtotal">
         <p>Subtotal</p>
       </div>
-      {console.log(cart)}
       {cart.map((item) => (
         <>
           <div className="Order_Name_Details" key={item.productId._id}>
