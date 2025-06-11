@@ -19,14 +19,28 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  "https://mern-e-commerce-82af.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "https://mern-e-commerce-82af.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
+app.use((req, res, next) => {
+  console.log("Request origin:", req.headers.origin);
+  next();
+});
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/lookup", productRoutes);
