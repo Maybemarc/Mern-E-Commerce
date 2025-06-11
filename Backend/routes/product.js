@@ -6,7 +6,7 @@ import {
   getSingleProduct,
   updateProduct,
 } from "../controllers/productController.js";
-import { isAdmin, verifyToken } from "../Middleware/protect.js";
+import { isAdmin, verifyToken } from "../middleware/protect.js";
 
 const router = express.Router();
 

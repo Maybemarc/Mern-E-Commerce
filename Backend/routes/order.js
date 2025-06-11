@@ -1,5 +1,5 @@
 import express from 'express';
-import { isAdmin, verifyToken } from '../Middleware/protect.js';
+import { isAdmin, verifyToken } from '../middleware/protect.js';
 import { cancelOrder, getAllOrders, getUserOrders, placeOrder } from '../controllers/orderController.js';
 
 const router = express.Router();

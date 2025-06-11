@@ -1,5 +1,5 @@
 import express from "express";
-import { verifyToken } from "../Middleware/protect.js";
+import { verifyToken } from "../middleware/protect.js";
 import {
   addToCart,
   getCart,

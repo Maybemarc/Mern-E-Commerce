@@ -4,7 +4,7 @@ import {
   logoutUser,
   registerUser,
 } from "../controllers/authController.js";
-import { verifyToken } from "../Middleware/protect.js";
+import { verifyToken } from "../middleware/protect.js";
 import User from "../Models/User_Model.js";
 
 const router = express.Router();
