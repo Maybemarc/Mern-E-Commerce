@@ -65,7 +65,7 @@ function Footer() {
             </a>
           </div>
           <div className="Links_Redirect">
-            <a href="https://github.com/Maybemarc" target="blank">
+            <a href="https://www.linkedin.com/in/surya-k-a556972a0" target="blank">
               <LinkedInIcon className="Link_icon" />
               <p>LinkedIn</p>
             </a>

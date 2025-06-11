@@ -4,6 +4,7 @@ import UserCart from "../UsersCart";
 import Protect from "../Secure/ProtectRoute";
 import MyOrders from "../MyOrders";
 import AdminRoutes from "../admin/AdminRoutes";
+import NotFound from "../NotFound";
 
 function SecurePages() {
   return (
@@ -14,6 +15,7 @@ function SecurePages() {
           <Route path="/user/order" element={<Orders />} />
           <Route path="/user/my-orders" element={<MyOrders />} />
           <Route path="/Admin/*" element={<AdminRoutes />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Protect>
     </div>

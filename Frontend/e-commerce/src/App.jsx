@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import SecurePages from "./pages/protected_routes/SecurePages";
 import {Toaster} from "react-hot-toast";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/secure/*" element={<SecurePages />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <Toaster />

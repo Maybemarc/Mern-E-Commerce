@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 function UpdateProduct() {
@@ -16,11 +17,18 @@ function UpdateProduct() {
     category: "",
   });
 
+  const fetchProduct = async() => {
+    try {
+      const res = await axios.get(`http://localhost:3000/api/lookup/product/${id}`)
+      setForm(res.data.product)
+    } catch (error) {
+      console.log(`Erron in Fetching to edit a product`, error)
+    }
+  }
+
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3000/api/lookup/product/${id}`).then(({ data }) => {
-        setForm(data.product);
-      });
+      fetchProduct()
     }
   }, [id]);
 
@@ -31,26 +39,24 @@ function UpdateProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = id ? `http://localhost:3000/api/lookup/update/${id}` : "http://localhost:3000/api/lookup/create";
-      const method = id ? "put" : "post";
-
-      await axios[method](url, form, { withCredentials: true });
-      navigate("/Admin/AllProducts");
+      const url =  await axios.put(`http://localhost:3000/api/lookup/update/${id}`, form, { withCredentials: true });
+      toast.success("Product Updated")
+      navigate("/secure/Admin/AllProducts");
     } catch (error) {
       console.error("Submit failed:", error);
+      toast.error(error.response?.data.message || error.message)
     }
   };
 
   return (
-    <div className="majestic-form-container">
-      <div className="nebula-glow" />
-      <form className="majestic-form" onSubmit={handleSubmit}>
-        <h2 className="title-cosmic">{id ? "Update" : "Create"} Galactic Product</h2>
+    <div className="Update_container">
+      <form className="Update_form" onSubmit={handleSubmit}>
+        <h2 className="Update_Header">{id ? "Update" : "Create"} Product</h2>
         {Object.keys(form).map((field) => (
           <div className="form-group" key={field}>
-            <label className="label-star">{field}</label>
+            <label className="Update_label">{field}</label>
             <input
-              className="input-aurora"
+              className="Update_input"
               name={field}
               value={form[field]}
               onChange={handleChange}
@@ -59,8 +65,8 @@ function UpdateProduct() {
             />
           </div>
         ))}
-        <button className="btn-supernova" type="submit">
-          {id ? "Update" : "Create"} ✨
+        <button className="Update_Button" type="submit">
+          Update
         </button>
       </form>
     </div>

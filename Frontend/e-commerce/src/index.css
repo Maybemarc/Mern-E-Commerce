@@ -65,6 +65,19 @@ body {
   color: #56637080;
 }
 
+.Right_Nav a{
+  text-decoration: none;
+}
+
+.Right_Nav a:hover{
+  color: black;
+}
+
+.Right_Nav a > h2{
+  padding-bottom: 12px;
+
+}
+
 .Nav_Components {
   display: flex;
   justify-content: space-between;
@@ -160,6 +173,12 @@ body {
   text-decoration: underline;
 }
 
+.Mobile_Links{
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
 @media (max-width: 800px) {
   .desktop-only {
     display: none ;
@@ -175,6 +194,13 @@ body {
   } to {
     transform: translateX(0);
   }
+}
+
+@media(max-width:480px){
+  .Navbar_container{
+    width: 90%;
+  }
+
 }
 
 
@@ -221,6 +247,21 @@ body {
 }
 
 
+/*///////////////////////////Notfound//////////////////*/
+
+.NotFound_Container{
+  padding: 50px 0px;
+}
+
+.NotFound_Redirect{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 0.5px solid rgb(218, 217, 217);
+  box-shadow: 0px 0px 5px ;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 
 /*///////////////////////Register//////////*/
@@ -366,7 +407,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 10px;
-  /* grid-template-columns: 2fr 4fr; */
+
 }
 
 .Login_Welcome{
@@ -1664,6 +1705,8 @@ body {
 
 
 
+
+
 /*/////////////////////////User Cart////////////////////////*/
 
 .Cart_Overall{
@@ -1742,8 +1785,8 @@ body {
 .Cart_Left{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  border: 2px solid rgb(226, 255, 226);
-  box-shadow: 0px 0px 2px rgb(102, 228, 123);
+  /* border: 0.5px solid grey; */
+  box-shadow: 0px 0px 5px rgb(235, 234, 234) ;
   padding: 0px 10px;
 }
 
@@ -1761,7 +1804,6 @@ body {
 .Cart_Product{
   display: flex;
   gap: 10px;
-  /* padding-left: 100px; */
 }
 
 .Cart_Details {
@@ -1798,16 +1840,14 @@ body {
 }
 
 .Cart_Right{
-  /* background-color: rgb(230, 230, 230); */
   text-align: start;
   padding-left: 10px;
   position: relative;
   max-height: fit-content;
   padding-bottom: 100px;
   padding-right: 10px;
-  /* border: 0.2px solid rgb(223, 223, 223); */
   border-radius: 10px;
-  box-shadow: 0px 0px 5px rgb(112, 255, 24);
+  box-shadow: 0px 0px 5px rgb(235, 234, 234) ;
 }
 
 .Cart_Total{
@@ -1855,78 +1895,55 @@ body {
   }
 }
 
-@media(max-width:800px){
-    .Cart_Left{
-  display: grid;
-  width: 100%;
-}
 
-.Cart_Right{
-  width: 90%;
-}
+@media(max-width:480px){
+
+  .Cart_And_Order{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
 
   .Cart_Page_Header{
-  text-align: start;
-  padding: 25px 10px 0px 10px;
-  font-size: 14px;
-}
+    font-size: 1em;
+    /* margin: 0; */
+  }
+
+  .Your_Order_Button{
+    margin: 0px 0px 0px 50px !important;
+  }
 
   .Cart_Collection{
     padding: 10px;
   }
 
-  .Cart_And_Order > button{
-  margin-top: 30px;
-  padding: 10px 10px;
-
-}
-  
   .Cart_Left{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    padding: 0px;
+
+  }
+
+  .Cart_Product{
+    display: flex;
+    flex-direction: column;
     padding: 0;
   }
 
-  .cart1{
-    grid-row-start: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .Cart_Product > img{
+    width: 80%;
   }
 
-  .cart2{
-    grid-row-start: 2;
-  }
-
-  .cart3{
-    grid-row-start: 3;
-  }
-
-  .cart4{
-    grid-row-start: 4;
-  }
-
-  .Cart_Product,.Cart_Quantity,.Cart_Price,.Cart_Delete{
-  padding: 5px;
-  text-align: start;
-  border-bottom: 0.5px solid rgb(241, 241, 241);
-}
-
- .Cart_Product{
-  flex-direction: column;
-  }
-
-  .Checkout{
-  width: 80%;
-  position: absolute;
-  bottom: 4%;
+  
+.Range_input{
+  max-width: 20px;
+  border-radius: 10px;
+  padding: 5px 20px;
   text-align: center;
+  border: 1px solid #5a7f7a;
 }
 
-
-
 }
-
 
 
 
@@ -2757,8 +2774,7 @@ body {
 
 /* CreateProduct.css */
 
-.majestic-form-container {
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+.Update_container {
   position: relative;
   display: flex;
   justify-content: center;
@@ -2767,33 +2783,7 @@ body {
   min-height: 100vh;
 }
 
-.nebula-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(133,63,255,0.4), transparent 70%);
-  border-radius: 50%;
-  animation: pulse 6s ease-in-out infinite alternate;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 0;
-  filter: blur(60px);
-}
-
-@keyframes pulse {
-  0% {
-    transform: translateX(-50%) scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(-50%) scale(1.2);
-    opacity: 1;
-  }
-}
-
-.majestic-form {
-  z-index: 1;
+.Update_form {
   background: rgba(25, 25, 112, 0.95);
   padding: 50px 40px;
   border-radius: 30px;
@@ -2803,21 +2793,19 @@ body {
   max-width: 600px;
 }
 
-.title-cosmic {
+.Update_Header {
   font-size: 2rem;
   text-align: center;
-  background: linear-gradient(to right, #ff6ec4, #7873f5);
-  /* -webkit-background-clip: text; */
-  color: transparent;
   margin-bottom: 30px;
-  text-shadow: 0 0 8px #c5a3ff;
+  color: white;
+  text-shadow: 0 0 6px #c5a3ff;
 }
 
 .form-group {
   margin-bottom: 20px;
 }
 
-.label-star {
+.Update_label {
   display: block;
   font-size: 0.95rem;
   margin-bottom: 6px;
@@ -2825,45 +2813,47 @@ body {
   font-weight: 600;
 }
 
-.input-aurora {
+.Update_input {
   width: 100%;
   padding: 10px 15px;
   border-radius: 12px;
   border: none;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
   color: #fff;
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-.input-aurora:focus {
+.Update_input:focus {
   outline: none;
-  border: 1px solid #00e6e6;
+  border: 1px solid white;
   box-shadow: 0 0 10px #00e6e6;
-  background: rgba(255, 255, 255, 0.2);
 }
 
-.btn-supernova {
+.Update_input::placeholder{
+  color: white;
+}
+
+.Update_Button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
   font-size: 1rem;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
-  color: #fff;
+  background-color: white;
+  color: rgba(25, 25, 112, 0.95);
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 20px #ff7eb3;
+  box-shadow: 0 0 5px #ff7eb3;
 }
 
-.btn-supernova:hover {
+.Update_Button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px #ff6ec4, 0 0 15px #ff7eb3;
+  box-shadow: 0 0 2px #ff6ec4;
 }
 
 

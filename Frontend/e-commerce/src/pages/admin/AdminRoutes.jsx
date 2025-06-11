@@ -4,6 +4,7 @@ import AllProducts from "./AllProducts";
 import CreateProduct from "./CreateProduct";
 import UpdateProduct from "./UpdateProduct";
 import AdminProtect from "./AdminProtect";
+import NotFound from "../NotFound";
 
 function AdminRoutes() {
   return (
@@ -14,6 +15,7 @@ function AdminRoutes() {
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/UpdateProduct/:id" element={<UpdateProduct />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AdminProtect>
     </div>

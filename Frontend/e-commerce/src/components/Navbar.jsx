@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, SetUser, checkUser,loading } = useAuth();
+  const { user, SetUser, checkUser, loading } = useAuth();
   const navigate = useNavigate();
 
   const logoutUser = async () => {
@@ -22,8 +22,8 @@ function Navbar() {
       );
       SetUser(null);
       Cookies.remove("token");
-      toast.success("Logged Out")
-      checkUser()
+      toast.success("Logged Out");
+      checkUser();
       navigate("/login");
     } catch (error) {
       console.log(
@@ -48,16 +48,20 @@ function Navbar() {
       <div className="Navbar_container">
         <div className="Left_Nav">
           <div className="left_Nav_Box">
-            <img className="Left_logo" src={Clothify} alt="Logo" />
+            <Link to="/">
+              <img className="Left_logo" src={Clothify} />
+            </Link>
           </div>
         </div>
 
         <div className="Right_Nav desktop-only">
-          <div className="Search_Bar">
+          {/* <div className="Search_Bar">
             <input type="text" placeholder="Search For an Item Here" />
-          </div>
+          </div> */}
           <div>
-            <h2>Explore</h2>
+            <Link to="/products">
+              <h2>Explore</h2>
+            </Link>
           </div>
         </div>
 
@@ -82,7 +86,7 @@ function Navbar() {
           <div className="Component_One">
             <h2
               onClick={() => {
-                const goToCategory = document.getElementById("Category_Area");
+                const goToCategory = document.getElementById("Footer_Area");
                 if (goToCategory) {
                   goToCategory.scrollIntoView({ behavior: "smooth" });
                 }
@@ -141,28 +145,74 @@ function Navbar() {
           <div className="drawer-header">
             <h2>Menu</h2>
             <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
-              ×
+              X
             </button>
           </div>
           <div className="drawer-links">
-            {!user ? <h2>Sign Up</h2> : null}
-            {!user ? <h2>Login</h2> : <h2>Hi</h2>}
+            {!user ? (
+              <Link
+                to="/signup"
+                className="Component_One"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <p className="Mobile_Links">Sign Up</p>
+              </Link>
+            ) : null}
+            {!user ? (
+              <p
+                className="Mobile_Links"
+                onClick={() => {
+                  navigate("/login");
+                  setIsMenuOpen(false);
+                }}
+              >
+                Login
+              </p>
+            ) : (
+              <h2>{user?.username?.toUpperCase().slice(0, 2)}</h2>
+            )}
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/shop" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/products" onClick={() => setIsMenuOpen(false)}>
               Shop
             </Link>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
-              About Us
-            </Link>
-            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+            <p
+              className="Mobile_Links"
+              onClick={() => {
+                const goToFooter = document.getElementById("Footer_Area");
+                if (goToFooter) {
+                  goToFooter.scrollIntoView({ behavior: "smooth" });
+                }
+                setIsMenuOpen(false);
+              }}
+            >
+              Category
+            </p>
+            <p
+              className="Mobile_Links"
+              onClick={() => {
+                const goToConatct = document.getElementById("Footer_Area");
+                if (goToConatct) {
+                  goToConatct.scrollIntoView({ behavior: "smooth" });
+                }
+                setIsMenuOpen(false);
+              }}
+            >
               Contact Us
-            </Link>
-            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-              Login
-            </Link>
-            <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
+            </p>
+            {user ? (
+              <p
+                className="Mobile_Links"
+                onClick={() => {
+                  logoutUser();
+                  setIsMenuOpen(false);
+                }}
+              >
+                Logout
+              </p>
+            ) : null}
+            <Link to="/secure/user/cart" onClick={() => setIsMenuOpen(false)}>
               Cart
             </Link>
           </div>

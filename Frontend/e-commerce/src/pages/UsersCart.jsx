@@ -57,10 +57,10 @@ function Cart() {
 
         <div className="Cart_Collection">
           <div className="Cart_Left">
-            <div className="Cart_Header cart1">Product</div>
-            <div className="Cart_Header cart2">Quantity</div>
-            <div className="Cart_Header cart3">SubTotal</div>
-            <div className="Cart_Header cart4"></div>
+            <div className="Cart_Header ">Product</div>
+            <div className="Cart_Header ">Quantity</div>
+            <div className="Cart_Header ">SubTotal</div>
+            <div className="Cart_Header "></div>
             {!cart || cart.length === 0 ? (
               <div className="No_products">
                 <h2>No products found</h2>
@@ -135,7 +135,6 @@ function Cart() {
             )}
           </div>
         </div>
-        {/* <FollowOns /> */}
       </div>
     </div>
   );

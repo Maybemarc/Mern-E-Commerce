@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 function AllProducts() {
   const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fetchProducts = async () => {
     try {
       const res = await axios.get(

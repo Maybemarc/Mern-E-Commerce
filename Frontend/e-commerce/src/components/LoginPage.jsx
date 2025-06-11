@@ -61,7 +61,7 @@ function Login() {
         <div className="Login_Details">
           <div className="Login_Box">
             <h2>Login</h2>
-            <form onSubmit={login}>
+            <form onSubmit={login}  >
               <div className="Login_Form_Content">
                 <label>
                   Email <span>*</span>
