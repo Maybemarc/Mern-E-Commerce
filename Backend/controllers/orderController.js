@@ -1,5 +1,5 @@
-import Order from "../Models/Order._model.js";
-import User from "../Models/User_Model.js";
+import Order from "../models/Order._model.js";
+import User from "../models/User_Model.js";
 
 export const placeOrder = async (req, res) => {
   const user = await User.findById(req.user.id).populate("cart.productId");
