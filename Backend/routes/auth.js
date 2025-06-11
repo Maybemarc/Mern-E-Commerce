@@ -5,7 +5,7 @@ import {
   registerUser,
 } from "../controllers/authController.js";
 import { verifyToken } from "../middleware/protect.js";
-import User from "../Models/User_Model.js";
+import User from "../models/User_Model.js";
 
 const router = express.Router();
 
