@@ -28,9 +28,6 @@ function ProductsPage() {
         },
       });
       setProducts(res.data.products);
-      // const allDiscountedPrices = allProducts.map((p) =>
-      //   discountedPrice(p.price, p.discountPercentage)
-      // );
       const max = Math.max(100, 5000);
       setMaxPrice(max);
       setPriceLimit(max);
@@ -58,6 +55,15 @@ function ProductsPage() {
       const priceB = discountedPrice(b.price, b.discountPercentage);
       return sortOrder === -1 ? priceB - priceA : priceA - priceB;
     });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setSelectedCategory(initialCategory);
+  }, [initialCategory]);
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -67,10 +73,9 @@ function ProductsPage() {
   }, [selectedCategory, sortOrder]);
 
   return (
-    <div className="ProductsPage_Overall">
+    <div className="ProductsPage_Overall" id="Product_Area">
       <div className="ProductsPage_Collection">
-        <div className="ProductsPage_Heading">
-        </div>
+        <div className="ProductsPage_Heading"></div>
         <div className="ProductsPage_Sorting">
           <p>
             Showing <strong>{sortedProducts.length}</strong> Results in{" "}
@@ -166,7 +171,7 @@ function ProductsPage() {
               ✕
             </button>
             <p>Filter By Catergories</p>
-            {categories.map((cat,index) => (
+            {categories.map((cat, index) => (
               <div className="ProductsPage_Category" key={index}>
                 <button
                   className="ProductsPage_Category_Button"

@@ -25,10 +25,10 @@ function Footer() {
   }, []);
 
   return (
-    <div className="Footer_Container">
+    <div className="Footer_Container" id="Footer_Area">
       <div className="Footer_Category">
         <div className="Footer_Types">
-          <h2>Hello</h2>
+          <h2>Shop</h2>
           {Categories.length === 0
             ? "NO Category"
             : Categories.map((cat,index) => (
@@ -37,13 +37,21 @@ function Footer() {
                     to={`/products?category=${cat}`}
                     className="Footer_Links"
                   >
-                    <p className="Footer_Items">{cat}</p>
+                    <p className="Footer_Items"
+                    onClick={() => {
+                      const goToProducts = document.getElementById("Navbar_Area")
+                      if(goToProducts){
+                        goToProducts.scrollIntoView({behavior:"smooth"})
+                      }
+
+                    }}
+                    >{cat}</p>
                   </Link>
                 </div>
               ))}
         </div>
         <div className="Contact_Us">
-          <h2>Hello</h2>
+          <h2>Contact</h2>
           <div className="Links_Redirect">
             <a href="mailto:surya207757@gmail.com" target="blank">
               <EmailIcon className="Link_icon" />

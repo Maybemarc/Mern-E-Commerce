@@ -9,6 +9,7 @@ import { CartProvider } from "./components/Context/Cart";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import SecurePages from "./pages/protected_routes/SecurePages";
+import {Toaster} from "react-hot-toast";
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
           <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/secure/*" element={<SecurePages/>} />
+          <Route path="/secure/*" element={<SecurePages />} />
         </Routes>
         <Footer />
+        <Toaster />
       </CartProvider>
     </div>
   );

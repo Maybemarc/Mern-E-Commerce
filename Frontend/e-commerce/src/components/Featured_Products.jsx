@@ -9,6 +9,7 @@ function FeaturedProducts() {
   const { user, loading } = useAuth();
   const { addCart } = useCart();
   const navigate = useNavigate();
+  
 
   const fetchProducts = async function () {
     try {

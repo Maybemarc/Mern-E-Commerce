@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -25,10 +26,11 @@ function SignUp() {
       const res = await axios.post("http://localhost:3000/api/auth/", form, {
         withCredentials: true,
       });
-
-      navigate("/");
+      toast.success("Registered")
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
+       toast.error(err.response?.data.message || error.message);
     }
   };
 

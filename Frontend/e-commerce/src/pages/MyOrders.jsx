@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../components/Context/AuthProvider";
 import FollowOns from "../components/FollowOns";
+import toast from "react-hot-toast";
 
 function MyOrders() {
   const { user } = useAuth();
@@ -15,7 +16,6 @@ function MyOrders() {
           withCredentials: true,
         }
       );
-      console.log(res.data);
       setOrders(res.data.orders);
     } catch (err) {
       console.log("Error fetching orders:", err);
@@ -30,6 +30,7 @@ function MyOrders() {
           withCredentials: true,
         }
       );
+      toast.error("Order Cancelled")
       fetchOrders();
     } catch (err) {
       console.log("Error cancelling order:", err);

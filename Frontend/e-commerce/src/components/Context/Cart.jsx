@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
+import toast, { ToastBar } from "react-hot-toast";
 export const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
@@ -44,9 +45,11 @@ export const CartProvider = ({ children }) => {
         }
       );
       setCart(response.data.cart);
+      toast.success("Product Added")
       fetchCart()
     } catch (error) {
-      console.log(`Error in Adding to Cart: `, error);
+      console.log(`Error in Adding to Cart: `, error)
+
     }
   };
 
@@ -58,6 +61,7 @@ export const CartProvider = ({ children }) => {
         { withCredentials: true }
       );
       setCart(response.data.cart);
+      toast.success("Product Updated")
       fetchCart()
     } catch (error) {
       console.log(`Error in Updating Quantity: `, error);
@@ -71,6 +75,7 @@ export const CartProvider = ({ children }) => {
         { withCredentials: true }
       );
       setCart(response.data.cart);
+      toast.error("Product Removed")
       fetchCart()
     } catch (error) {
       console.log(`Error in Removing to Cart: `, error);

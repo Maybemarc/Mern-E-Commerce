@@ -9,7 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, SetUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const checkUser = async function () {
     const token = Cookies.get("token");
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       });
       SetUser(response.data);
-        setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(
         "Error in Checking User: ",
@@ -32,8 +32,7 @@ export const AuthProvider = ({ children }) => {
       );
       Cookies.remove("token");
       SetUser(null);
-      navigate("/login")
-      
+      navigate("/login");
     }
   };
 
@@ -43,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <div>
-      <AuthContext.Provider value={{ user, SetUser,loading }}>
+      <AuthContext.Provider value={{ user, SetUser,checkUser , loading }}>
         {children}
       </AuthContext.Provider>
     </div>

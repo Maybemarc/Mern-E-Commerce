@@ -3,6 +3,7 @@ import { useCart } from "./Context/Cart";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "./LoadPage";
+import toast from "react-hot-toast";
 
 function OrderDetails() {
   const { cart, loader, fetchCart } = useCart();
@@ -27,13 +28,14 @@ function OrderDetails() {
         }
       );
       fetchCart();
+      toast.success("Order Placed")
       setTimeout(() => {
         navigate("/secure/user/cart");
       }, 1000);
     } catch (error) {
       console.error("Order failed:", error);
-      alert("Order placement failed");
       setPlacingOrder(false);
+      toast.error("Order failed")
     }
   };
 

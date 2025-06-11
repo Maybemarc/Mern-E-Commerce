@@ -61,7 +61,7 @@ function Related(props) {
             <div className="Related_Price_Details">
               <div className="Detail_Price_Content">
                 <p className="Related_Final_Price">
-                  {discountedPrice(prod.price, prod.discountPercentage).toFixed(
+                  ₹{discountedPrice(prod.price, prod.discountPercentage).toFixed(
                     0
                   )}
                 </p>

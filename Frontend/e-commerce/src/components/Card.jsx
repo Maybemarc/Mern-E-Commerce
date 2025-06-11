@@ -24,7 +24,7 @@ function Card() {
   }, []);
 
   return (
-    <div className="Categories_Container">
+    <div className="Categories_Container" id="Category_Area">
       <div className="category">
         <h2>Categories</h2>
       </div>

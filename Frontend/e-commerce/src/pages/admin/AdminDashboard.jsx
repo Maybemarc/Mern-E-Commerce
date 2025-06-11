@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../components/Context/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import Loader from "../../components/LoadPage";
 
 function AdminDashboard() {
-  const { user } = useAuth();
+  const { user,checkUser , loading  } = useAuth();
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingCondition, setLoadingCondition] = useState(true);
+
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -19,19 +22,18 @@ function AdminDashboard() {
         );
         setOrders(res.data.orders);
       } catch (err) {
-        console.error(
-          "Error fetching orders:",
-          err.response?.data || err.message
-        );
+        toast.error("Admin only Access")
       } finally {
-        setLoading(false);
+        setLoadingCondition(false);
       }
     };
 
     fetchOrders();
   }, []);
 
-  if (loading) return <div>Loading orders...</div>;
+  if(loading) return <Loader />
+  if(!user.isAdmin) return <Loader />
+  if (loadingCondition) return <div>Loading orders...</div>;
 
   return (
     <div className="admin-orders">

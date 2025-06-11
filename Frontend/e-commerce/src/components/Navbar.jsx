@@ -1,27 +1,54 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./Context/AuthProvider";
-import Clothify from "../assets/Logo/clothify-high-resolution-logo.png"
+import Clothify from "../assets/Logo/clothify-high-resolution-logo.png";
+import Loader from "./LoadPage";
+import Cookies from "js-cookie";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, loading } = useAuth();
+  const { user, SetUser, checkUser,loading } = useAuth();
   const navigate = useNavigate();
-  
+
+  const logoutUser = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/logout",
+        {
+          withCredentials: true,
+        }
+      );
+      SetUser(null);
+      Cookies.remove("token");
+      toast.success("Logged Out")
+      checkUser()
+      navigate("/login");
+    } catch (error) {
+      console.log(
+        "Error in Logout User: ",
+        error.response?.data || error.message
+      );
+      toast.error(error.response?.data.message || error.message);
+      Cookies.remove("token");
+      SetUser(null);
+      navigate("/login");
+    }
+  };
+
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
+  if (loading) return <Loader />;
+
   return (
-    <div className="Navbar_Box">
+    <div className="Navbar_Box" id="Navbar_Area">
       <div className="Navbar_container">
         <div className="Left_Nav">
           <div className="left_Nav_Box">
-            <img
-              className="Left_logo"
-              src={Clothify}
-              alt="Logo"
-            />
+            <img className="Left_logo" src={Clothify} alt="Logo" />
           </div>
         </div>
 
@@ -50,13 +77,31 @@ function Navbar() {
             </div>
           </Link>
           <div className="Component_One">
-            <h2 onClick={() => navigate("/products")} >Shop</h2>
+            <h2 onClick={() => navigate("/products")}>Shop</h2>
           </div>
           <div className="Component_One">
-            <h2>About Us</h2>
+            <h2
+              onClick={() => {
+                const goToCategory = document.getElementById("Category_Area");
+                if (goToCategory) {
+                  goToCategory.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Category
+            </h2>
           </div>
           <div className="Component_One">
-            <h2>Contact Us</h2>
+            <h2
+              onClick={() => {
+                const footer = document.getElementById("Footer_Area");
+                if (footer) {
+                  footer.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Contact Us
+            </h2>
           </div>
         </div>
         <div className="Component_Box_Two">
@@ -73,13 +118,20 @@ function Navbar() {
                 Login
               </h2>
             ) : (
-              <h2>
-                {user.username.toUpperCase().slice(0,2)}
-              </h2>
+              <h2>{user?.username?.toUpperCase().slice(0, 2)}</h2>
             )}
           </div>
           <div className="Component_One">
-            <h2 onClick={() => navigate("/secure/user/cart")} >Cart</h2>
+            <h2 onClick={() => navigate("/secure/user/cart")}>Cart</h2>
+          </div>
+          <div className="Component_One">
+            {user ? <h2 onClick={() => logoutUser()}>Logout</h2> : null}
+          </div>
+
+          <div className="Component_One">
+            {user?.isAdmin ? (
+              <h2 onClick={() => navigate("/secure/Admin")}>Admin</h2>
+            ) : null}
           </div>
         </div>
       </div>

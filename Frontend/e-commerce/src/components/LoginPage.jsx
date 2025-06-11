@@ -1,22 +1,25 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useAuth } from "./Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Login() {
-  const { user, SetUser, loading } = useAuth();
+  const { user, SetUser, checkUser, loading } = useAuth();
   const [content, SetContent] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
 
-  if (!loading) {
-    if (user) {
-      navigate("/");
+  useEffect(() => {
+    if (!loading) {
+      if (user) {
+        navigate("/");
+      }
     }
-  }
+  });
 
   const handleChange = function (event) {
     const { name, value } = event.target;
@@ -33,11 +36,12 @@ function Login() {
       );
       SetUser(response.data.token);
       Cookies.set("token", response.data.token, { expires: 365 });
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+      toast.success("Logged In");
+      await checkUser();
+      navigate("/");
     } catch (error) {
-      console.log(`Error in loggin In: `, error);
+      toast.error(error.response?.data.message || error.message);
+      navigate("/login");
     }
   };
 

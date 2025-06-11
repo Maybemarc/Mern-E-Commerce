@@ -10,6 +10,10 @@ function Cart() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const initialQuantities = {};
     cart.forEach((item) => {
       initialQuantities[item.productId._id] = item.quantity;
@@ -23,7 +27,12 @@ function Cart() {
     await updateQuantity(id, newQty);
   };
 
-  const subtotal = cart.reduce((acc, item) => {
+  const subtotalOriginal = cart.reduce((acc, item) => {
+  return acc + item.productId.price * item.quantity;
+}, 0);
+
+
+  const subtotalDiscounted = cart.reduce((acc, item) => {
     const discountedPrice = Math.round(
       item.productId.price * (1 - item.productId.discountPercentage / 100)
     );
@@ -38,7 +47,10 @@ function Cart() {
       <div className="Cart_Container">
         <div className="Cart_And_Order">
           <h2 className="Cart_Page_Header">Your Cart 🛒</h2>
-          <button className="Your_Order_Button" onClick={() => navigate("/secure/user/my-orders")}>
+          <button
+            className="Your_Order_Button"
+            onClick={() => navigate("/secure/user/my-orders")}
+          >
             Your Orders
           </button>
         </div>
@@ -106,11 +118,11 @@ function Cart() {
             <p className="Cart_Total">Cart Total</p>
             <div className="Total_Price">
               <h2>Subtotal</h2>
-              <p>₹{subtotal}</p>
+              <p>₹{subtotalOriginal}</p>
             </div>
             <div className="Total_Price">
-              <h2>Discount</h2>
-              <p>₹{subtotal}</p>
+              <h2>Discounted</h2>
+              <p>₹{subtotalDiscounted}</p>
             </div>
             {!cart || cart.length === 0 ? (
               <Link to="/products">

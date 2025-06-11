@@ -14,6 +14,10 @@ function ProductDetail() {
   const { addCart } = useCart();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const SingleProduct = async () => {
     try {
       const response = await axios.get(
@@ -30,7 +34,7 @@ function ProductDetail() {
     if (!loading) {
       if (user) {
         addCart(item._id, quantity);
-        navigate("/secure/user/cart")
+        navigate("/secure/user/cart");
       } else {
         navigate("/login");
       }
@@ -41,9 +45,11 @@ function ProductDetail() {
     SingleProduct();
   }, []);
 
+  const discountedPrice = (price, discounted) => price * (1 - discounted / 100);
+
   return (
     <div>
-      <h1 className="SpecificProduct_Header" >SpecificProduct</h1>
+      <h1 className="SpecificProduct_Header">SpecificProduct</h1>
       {spinner ? (
         <p>Loading... </p>
       ) : (
@@ -55,7 +61,10 @@ function ProductDetail() {
             <h1>{item.name}</h1>
             <h2>{item.category}</h2>
             <p>{item.discountPercentage}% OFF</p>
-            <p>{item.price}</p>
+            <p>
+              ₹{discountedPrice(item.price, item.discountPercentage).toFixed(0)}
+            </p>
+            <p style={{ textDecoration: "line-through" }}>{item.price}</p>
             <p> {item.description}</p>
             <div className="Cart_Content">
               <input
