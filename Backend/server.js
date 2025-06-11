@@ -31,7 +31,7 @@ app.use("/api/lookup", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 
+await connectDB();
 app.listen(port, () => {
-  connectDB();
   console.log(`Server is listening on port ${port}`);
 });
