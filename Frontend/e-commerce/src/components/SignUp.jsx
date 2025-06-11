@@ -14,6 +14,8 @@ function SignUp() {
 
   const [error, setError] = useState("");
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -23,7 +25,7 @@ function SignUp() {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/", form, {
+      const res = await axios.post(`${API_URL}/auth/`, form, {
         withCredentials: true,
       });
       toast.success("Registered")

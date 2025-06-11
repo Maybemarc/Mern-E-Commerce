@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 function UpdateProduct() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,18 +16,22 @@ function UpdateProduct() {
     category: "",
   });
 
-  const fetchProduct = async() => {
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
+  const fetchProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/lookup/product/${id}`)
-      setForm(res.data.product)
+      const res = await axios.get(
+        `${API_URL}/lookup/product/${id}`
+      );
+      setForm(res.data.product);
     } catch (error) {
-      console.log(`Erron in Fetching to edit a product`, error)
+      console.log(`Erron in Fetching to edit a product`, error);
     }
-  }
+  };
 
   useEffect(() => {
     if (id) {
-      fetchProduct()
+      fetchProduct();
     }
   }, [id]);
 
@@ -39,12 +42,16 @@ function UpdateProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url =  await axios.put(`http://localhost:3000/api/lookup/update/${id}`, form, { withCredentials: true });
-      toast.success("Product Updated")
+      const url = await axios.put(
+        `${API_URL}/lookup/update/${id}`,
+        form,
+        { withCredentials: true }
+      );
+      toast.success("Product Updated");
       navigate("/secure/Admin/AllProducts");
     } catch (error) {
       console.error("Submit failed:", error);
-      toast.error(error.response?.data.message || error.message)
+      toast.error(error.response?.data.message || error.message);
     }
   };
 

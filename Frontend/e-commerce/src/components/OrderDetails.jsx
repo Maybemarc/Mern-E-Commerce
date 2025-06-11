@@ -10,6 +10,8 @@ function OrderDetails() {
   const [placingOrder, setPlacingOrder] = useState(false);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const subtotal = cart.reduce((acc, item) => {
     const discounted = Math.round(
       item.productId.price * (1 - item.productId.discountPercentage / 100)
@@ -21,7 +23,7 @@ function OrderDetails() {
     try {
       setPlacingOrder(true);
       const repsonse = await axios.post(
-        "http://localhost:3000/api/orders",
+        `${API_URL}/orders`,
         {},
         {
           withCredentials: true,

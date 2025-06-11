@@ -12,10 +12,13 @@ function Navbar() {
   const { user, SetUser, checkUser, loading } = useAuth();
   const navigate = useNavigate();
 
+  
+const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const logoutUser = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        `${API_URL}/auth/logout`,
         {
           withCredentials: true,
         }

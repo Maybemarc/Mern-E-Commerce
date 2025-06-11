@@ -6,10 +6,12 @@ import Icons from "../utils/icons";
 function Card() {
   const [Categories, SetCategories] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const fetchProducts = async function () {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/lookup?limit=30"
+        `${API_URL}/lookup?limit=30`
       );
       const result = response.data.products;
       const uniqueCategories = [...new Set(result.map((p) => p.category))];

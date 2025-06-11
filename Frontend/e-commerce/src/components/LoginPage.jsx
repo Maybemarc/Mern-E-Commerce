@@ -13,6 +13,8 @@ function Login() {
   });
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   useEffect(() => {
     if (!loading) {
       if (user) {
@@ -31,7 +33,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        `${API_URL}/auth/login`,
         { email: content.email, password: content.password }
       );
       SetUser(response.data.token);

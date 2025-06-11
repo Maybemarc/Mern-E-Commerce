@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
+const API_URL = import.meta.env.VITE_API_BASE_URL
+
 export const AuthProvider = ({ children }) => {
   const [user, SetUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const response = await axios.get("http://localhost:3000/api/auth/me", {
+      const response = await axios.get(`${API_URL}/auth/me`, {
         withCredentials: true,
       });
       SetUser(response.data);

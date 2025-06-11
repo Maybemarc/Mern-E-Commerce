@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 function AllProducts() {
   const [products, setProducts] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,7 +14,7 @@ function AllProducts() {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/lookup?limit=100",
+        `${API_URL}/lookup?limit=100`,
         {
           withCredentials: true,
         }
@@ -25,7 +27,7 @@ function AllProducts() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/lookup/delete/${id}`, {
+      await axios.delete(`${API_URL}/lookup/delete/${id}`, {
         withCredentials: true,
       });
       console.log(id);

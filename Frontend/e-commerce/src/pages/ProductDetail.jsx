@@ -14,6 +14,9 @@ function ProductDetail() {
   const { addCart } = useCart();
   const navigate = useNavigate();
 
+  
+const API_URL = import.meta.env.VITE_API_BASE_URL
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -21,7 +24,7 @@ function ProductDetail() {
   const SingleProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/lookup/product/${id}`
+        `${API_URL}/lookup/product/${id}`
       );
       SetItems(response.data.product);
       SetSpinner(false);

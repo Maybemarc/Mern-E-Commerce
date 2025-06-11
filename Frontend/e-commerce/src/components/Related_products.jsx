@@ -11,10 +11,12 @@ function Related(props) {
   const { addCart } = useCart();
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/lookup?category=${props.category}`
+        `${API_URL}/lookup?category=${props.category}`
       );
       const result = response.data.products.filter(
         (c) => c._id !== props.productId

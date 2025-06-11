@@ -10,9 +10,11 @@ export const CartProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const { user, loading } = useAuth();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const fetchCart = async function () {
     try {
-      const response = await axios.get("http://localhost:3000/api/cart", {
+      const response = await axios.get(`${API_URL}/cart`, {
         withCredentials: true,
       });
       setCart(response.data.cart);
@@ -35,7 +37,7 @@ export const CartProvider = ({ children }) => {
   const addCart = async (productId, quantity) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/cart/add",
+        `${API_URL}/cart/add`,
         {
           productId,
           quantity,
@@ -56,7 +58,7 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = async (productId, quantity) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/cart/update/${productId}`,
+        `${API_URL}/cart/update/${productId}`,
         { quantity },
         { withCredentials: true }
       );
@@ -71,7 +73,7 @@ export const CartProvider = ({ children }) => {
   const removeCart = async (productId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/cart/remove/${productId}`,
+        `${API_URL}/cart/remove/${productId}`,
         { withCredentials: true }
       );
       setCart(response.data.cart);

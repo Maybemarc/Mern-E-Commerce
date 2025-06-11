@@ -14,6 +14,9 @@ function CreateProduct() {
     category: "",
   });
 
+const API_URL = import.meta.env.VITE_API_BASE_URL
+
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -21,7 +24,7 @@ function CreateProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/lookup/create", form, {
+      await axios.post(`${API_URL}/lookup/create`, form, {
         withCredentials: true,
       });
       navigate("/admin/AllProducts");

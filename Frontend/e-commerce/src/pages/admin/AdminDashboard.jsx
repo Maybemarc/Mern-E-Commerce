@@ -10,12 +10,14 @@ function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [loadingCondition, setLoadingCondition] = useState(true);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/orders/all-orders",
+          `${API_URL}/orders/all-orders`,
           {
             withCredentials: true,
           }

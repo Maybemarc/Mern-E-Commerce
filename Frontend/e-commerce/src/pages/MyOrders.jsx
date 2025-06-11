@@ -8,10 +8,12 @@ function MyOrders() {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/orders/my-orders",
+        `${API_URL}/orders/my-orders`,
         {
           withCredentials: true,
         }
@@ -25,7 +27,7 @@ function MyOrders() {
   const handleCancel = async (orderId) => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/orders/product/item/${orderId}`,
+        `${API_URL}/orders/product/item/${orderId}`,
         {
           withCredentials: true,
         }

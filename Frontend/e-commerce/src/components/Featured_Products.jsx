@@ -10,11 +10,12 @@ function FeaturedProducts() {
   const { addCart } = useCart();
   const navigate = useNavigate();
   
+  const API_URL = import.meta.env.VITE_API_BASE_URL
 
   const fetchProducts = async function () {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/lookup?limit=30"
+        `${API_URL}/lookup?limit=30`
       );
       const allProducts = response.data.products;
       const seenCategories = new Set();

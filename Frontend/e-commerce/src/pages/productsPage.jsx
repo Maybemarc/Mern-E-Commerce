@@ -19,9 +19,11 @@ function ProductsPage() {
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL
+
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/lookup?limit=30`, {
+      const res = await axios.get(`${API_URL}/lookup?limit=30`, {
         params: {
           category: selectedCategory,
           sort: sortOrder,
@@ -38,7 +40,7 @@ function ProductsPage() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/lookup?limit=30");
+      const res = await axios.get(`${API_URL}/lookup?limit=30`);
       const result = [...new Set(res.data.products.map((c) => c.category))];
       setCategories(result);
     } catch (error) {
