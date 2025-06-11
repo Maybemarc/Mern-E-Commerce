@@ -12,9 +12,10 @@ export const createProduct = async (req, res) => {
   } = req.body;
 
   if (!name || !description || !price || !stock || !imageUrl || !category) {
-    res
-      .status(400)
-      .json({ success: false, message: "All fields are Required" });
+    return res.status(400).json({
+      success: false,
+      message: "All fields are Required",
+    });
   }
 
   try {
@@ -36,15 +37,19 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
-   const { id } = req.params;
+  const { id } = req.params;
   const content = req.body;
 
   try {
-    const updateProduct = await Product.findOneAndUpdate(
-      { _id: id },
-      content,
-      { new: true }
-    );
+    const updateProduct = await Product.findOneAndUpdate({ _id: id }, content, {
+      new: true,
+    });
+
+    if (!updateProduct) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
     res.status(200).json({ success: true, product: updateProduct });
   } catch (error) {
     console.log(`Error in updating product :`, error);
@@ -115,7 +120,7 @@ export const getSingleProduct = async (req, res) => {
   try {
     const find = await Product.findById(req.params.id);
     if (!find) {
-      res.status(404).json({ success: false, message: "No product found" });
+      return res.status(404).json({ success: false, message: "No product found" });
     }
     res.status(200).json({ success: true, product: find });
   } catch (error) {
