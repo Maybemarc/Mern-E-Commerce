@@ -38,7 +38,67 @@ A full-featured, responsive E-Commerce website built with the **MERN stack** (Mo
 **Deployment:**
 - Vercel (Frontend + Backend)
 
+📦 root
+├── client/ # React Frontend
+│ ├── components/
+│ ├── pages/
+│ ├── utils/
+│ ├── App.jsx
+│ └── main.jsx
+│
+├── server/ # Express Backend
+│ ├── controllers/
+│ ├── routes/
+│ ├── models/
+│ ├── middleware/
+│ ├── config/
+│ └── server.js
+│
+├── .env
+└── README.md
 
 
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/mern-ecommerce.git
+cd mern-ecommerce
+
+2. Install Dependencies
+Backend
+
+cd Backend
+npm install
+
+Frontend
+
+cd e-commerce
+npm install
+
+3. Create Environment Variables
+In server/.env:
+
+PORT=3000
+MONGO_URI=your_mongo_connection_string
+JWT_SECRET=your_jwt_secret_key
+
+4. Run the App
+Backend:
+
+npm run dev
+Frontend:
+
+
+npm run dev
+Make sure both servers are running and CORS settings allow the frontend to communicate with the backend.
+
+🔐 Admin Access
+Only the admin has permission to create, update, and delete products.
+
+Admin credentials can be manually set in MongoDB by setting isAdmin: true for a user document.
 
 
