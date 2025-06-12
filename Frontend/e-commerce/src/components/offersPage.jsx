@@ -6,7 +6,7 @@ function OffersPage() {
       <div className="Offer_Container">
         <div className="Offer_One">
           <div className="Offer_One_Image">
-            <img src="./src/assets/T-Shirt/domino-studio-164_6wVEHfI-unsplash.jpg" />
+            <img src="/assets/T-Shirt/domino-studio-164_6wVEHfI-unsplash.jpg" />
           </div>
           <div className="Offer_One_Content">
             <h4>New Shoe Collection</h4>
@@ -34,7 +34,7 @@ function OffersPage() {
             <div className="Offer_Two_Content_Image">
               <img
                 className="Offer_Image"
-                src="./src/assets/T-Shirt/joseph-greve-dPw0N01onxE-unsplash.jpg"
+                src="/assets/T-Shirt/joseph-greve-dPw0N01onxE-unsplash.jpg"
                 width="100%"
                 height="100px"
               />
@@ -55,7 +55,7 @@ function OffersPage() {
             <div className="Offer_Two_Content_Image">
               <img
                 className="Offer_Image"
-                src="./src/assets/T-Shirt/lucas-santos-huRn8ECqADI-unsplash.jpg"
+                src="/assets/T-Shirt/lucas-santos-huRn8ECqADI-unsplash.jpg"
                 width="100%"
                 height="100px"
               />
