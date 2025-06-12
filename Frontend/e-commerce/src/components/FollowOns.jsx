@@ -1,7 +1,7 @@
-import Payment from "../assets/T-Shirt/wallet-svgrepo-com.png"
-import FreeShipping from "../assets/T-Shirt/truck-svgrepo-com.png";
-import Contact from "../assets/T-Shirt/chat-round-svgrepo-com.png"
-import Gifts from "../assets/T-Shirt/gift-svgrepo-com.png"
+import Payment from "/assets/T-Shirt/wallet-svgrepo-com.png"
+import FreeShipping from "/assets/T-Shirt/truck-svgrepo-com.png";
+import Contact from "/assets/T-Shirt/chat-round-svgrepo-com.png"
+import Gifts from "/assets/T-Shirt/gift-svgrepo-com.png"
 
 function FollowOns() {
   return (
