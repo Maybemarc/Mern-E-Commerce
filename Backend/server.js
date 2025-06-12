@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 const allowedOrigins = [
-  "https://mern-e-commerce-82af.vercel.app",
+  "https://mern-e-commerce-gett.vercel.app",
 ];
 
 app.use(
