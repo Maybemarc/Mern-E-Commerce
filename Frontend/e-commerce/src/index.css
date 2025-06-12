@@ -375,7 +375,7 @@ body {
     }
 
     .Register_Container{
-      width: 200px;
+      width: 250px;
       padding: 10px 20px;
     }
 
@@ -388,7 +388,7 @@ body {
     }
 
      .Register_Name > input{
-      width: 150px;
+      width: 90%;
       padding: 5px 10px;
      }
 

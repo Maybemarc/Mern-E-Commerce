@@ -12,17 +12,13 @@ function Navbar() {
   const { user, SetUser, checkUser, loading } = useAuth();
   const navigate = useNavigate();
 
-  
-const API_URL = import.meta.env.VITE_API_BASE_URL
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
 
   const logoutUser = async () => {
     try {
-      const response = await axios.post(
-        `${API_URL}/auth/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(`${API_URL}/auth/logout`, {
+        withCredentials: true,
+      });
       SetUser(null);
       Cookies.remove("token");
       toast.success("Logged Out");
@@ -218,6 +214,18 @@ const API_URL = import.meta.env.VITE_API_BASE_URL
             <Link to="/secure/user/cart" onClick={() => setIsMenuOpen(false)}>
               Cart
             </Link>
+
+            {user?.isAdmin ? (
+              <p
+                className="Mobile_Links"
+                onClick={() => {
+                  navigate("/secure/Admin");
+                  setIsMenuOpen(false);
+                }}
+              >
+                Admin
+              </p>
+            ) : null}
           </div>
         </div>
       )}
