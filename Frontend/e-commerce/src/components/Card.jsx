@@ -41,7 +41,7 @@ function Card() {
 
                   <div className="Arrow_Nav">
                     <img
-                      src="./src/assets/T-Shirt/right-arrow-svgrepo-com.png"
+                      src="/assets/T-Shirt/right-arrow-svgrepo-com.png"
                       width="20px"
                       height="20px"
                     />
