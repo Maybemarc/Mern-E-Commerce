@@ -116,5 +116,3 @@ URL : https://mern-e-commerce-82af.vercel.app
 
 
 
-https://mern-e-commerce-82af.vercel.app
-
