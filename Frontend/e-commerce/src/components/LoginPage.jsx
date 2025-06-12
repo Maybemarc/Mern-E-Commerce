@@ -13,7 +13,7 @@ function Login() {
   });
   const navigate = useNavigate();
 
-  const API_URL = import.meta.env.VITE_API_BASE_URL
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     if (!loading) {
@@ -34,7 +34,10 @@ function Login() {
     try {
       const response = await axios.post(
         `${API_URL}/auth/login`,
-        { email: content.email, password: content.password }
+        { email: content.email, password: content.password },
+        {
+          withCredentials: true,
+        }
       );
       SetUser(response.data.token);
       Cookies.set("token", response.data.token, { expires: 365 });
@@ -63,7 +66,7 @@ function Login() {
         <div className="Login_Details">
           <div className="Login_Box">
             <h2>Login</h2>
-            <form onSubmit={login}  >
+            <form onSubmit={login}>
               <div className="Login_Form_Content">
                 <label>
                   Email <span>*</span>
