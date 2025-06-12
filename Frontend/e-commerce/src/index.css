@@ -622,7 +622,7 @@ body {
 }
 
 .Index_Image_One{
-  background-image: url("./assets/T-Shirt/pexels-sebastiaan9977-1311590.jpg");
+  background-image: url("/assets/T-Shirt/pexels-sebastiaan9977-1311590.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -632,7 +632,7 @@ body {
 }
 
 .Index_Image_Two{
-  background-image: url("./assets/T-Shirt/mediamodifier-kJXGTOY1wLQ-unsplash.jpg");
+  background-image: url("/assets/T-Shirt/mediamodifier-kJXGTOY1wLQ-unsplash.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
