@@ -109,7 +109,7 @@ Admin credentials can be manually set in MongoDB by setting isAdmin: true for a 
 
 
 📡 Live Demo
-URL : https://mern-e-commerce-82af.vercel.app
+URL : https://mern-e-commerce-gett.vercel.app
 
 
 ---
