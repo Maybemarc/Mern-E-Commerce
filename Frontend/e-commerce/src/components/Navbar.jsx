@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./Context/AuthProvider";
-import Clothify from "../assets/Logo/clothify-high-resolution-logo.png";
+import Clothify from "/assets/T-Shirt/right-arrow-svgrepo-com.png";
 import Loader from "./LoadPage";
 import Cookies from "js-cookie";
 import axios from "axios";
