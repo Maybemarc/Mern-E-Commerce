@@ -95,7 +95,7 @@ JWT_SECRET=your_jwt_secret_key
 4. Run the App
 Backend:
 
-npm run dev
+node start
 Frontend:
 
 
