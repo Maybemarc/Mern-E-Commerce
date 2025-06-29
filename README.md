@@ -93,13 +93,13 @@ MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret_key
 
 4. Run the App
+
 Backend:
-
 node start
+
 Frontend:
-
-
 npm run dev
+
 Make sure both servers are running and CORS settings allow the frontend to communicate with the backend.
 
 🔐 Admin Access
