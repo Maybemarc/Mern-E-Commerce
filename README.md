@@ -75,13 +75,12 @@ git clone https://github.com/your-username/mern-ecommerce.git
 cd mern-ecommerce
 
 2. Install Dependencies
-Backend
 
+Backend
 cd Backend
 npm install
 
 Frontend
-
 cd e-commerce
 npm install
 
