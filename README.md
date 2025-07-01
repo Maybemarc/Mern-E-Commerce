@@ -102,8 +102,8 @@ npm run dev
 Make sure both servers are running and CORS settings allow the frontend to communicate with the backend.
 
 🔐 Admin Access
-Only the admin has permission to create, update, and delete products.
 
+Only the admin has permission to create, update, and delete products.
 Admin credentials can be manually set in MongoDB by setting isAdmin: true for a user document.
 
 
