@@ -72,6 +72,7 @@ Admin Dashboard
 
 ```bash
 git clone https://github.com/your-username/mern-ecommerce.git
+
 cd mern-ecommerce
 
 2. Install Dependencies
