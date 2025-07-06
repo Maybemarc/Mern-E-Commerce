@@ -71,7 +71,7 @@ Admin Dashboard
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/mern-ecommerce.git
+git clone https://github.com/Maybemarc/mern-ecommerce.git
 
 cd mern-ecommerce
 
