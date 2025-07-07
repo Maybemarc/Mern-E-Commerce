@@ -77,11 +77,11 @@ cd mern-ecommerce
 
 2. Install Dependencies
 
-Backend
+Backend:
 cd Backend
 npm install
 
-Frontend
+Frontend:
 cd e-commerce
 npm install
 
