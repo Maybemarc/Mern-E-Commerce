@@ -75,7 +75,7 @@ git clone https://github.com/Maybemarc/mern-ecommerce.git
 
 cd mern-ecommerce
 
-2. Install Dependencies
+2. Install Dependencies-
 
 Backend:
 cd Backend
