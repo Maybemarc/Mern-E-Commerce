@@ -92,7 +92,7 @@ PORT=3000
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret_key
 
-4. Run the App
+4. Run the App-
 
 Backend:
 node start
