@@ -16,7 +16,7 @@ A full-featured, responsive E-Commerce website built with the **MERN stack** (Mo
 
 ---
 
-## 🛠️ Tech Stack -
+## 🛠️ Tech Stack : 
 
 **Frontend:**
 - React.js
