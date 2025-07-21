@@ -81,7 +81,7 @@ Backend :
 cd Backend
 npm install
 
-Frontend:
+Frontend : 
 cd e-commerce
 npm install
 
