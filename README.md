@@ -85,7 +85,7 @@ Frontend :
 cd e-commerce
 npm install
 
-3. Create Environment Variables-
+3. Create Environment Variables - 
 In server/.env:
 
 PORT=3000
