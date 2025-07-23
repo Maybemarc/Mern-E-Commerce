@@ -94,7 +94,7 @@ JWT_SECRET=your_jwt_secret_key
 
 4. Run the App - 
 
-Backend:
+Backend : 
 node start
 
 Frontend:
