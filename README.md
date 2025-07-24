@@ -97,7 +97,7 @@ JWT_SECRET=your_jwt_secret_key
 Backend : 
 node start
 
-Frontend:
+Frontend : 
 npm run dev
 
 Make sure both servers are running and CORS settings allow the frontend to communicate with the backend.
