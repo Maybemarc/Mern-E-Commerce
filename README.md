@@ -60,7 +60,7 @@ A full-featured, responsive E-Commerce website built with the **MERN stack** (Mo
 HomePage - 
 ![image](https://github.com/user-attachments/assets/d8c85b96-81d1-4346-8298-105b8ef837ac)
 
-Admin Dashboard
+Admin Dashboard - 
 ![image](https://github.com/user-attachments/assets/8f15e700-b7b6-4b2e-8114-9cb42caba518)
 
 
