@@ -1,4 +1,4 @@
-# 🛒 MERN E-Commerce Web Application
+# 🛒 MERN E-Commerce Web Application - 
 
 A full-featured, responsive E-Commerce website built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js), featuring **secure authentication**, **dynamic product listing**, **shopping cart**, **order system**, and **admin-only product management**. Designed for smooth user experience with seamless integration between frontend and backend.
 
