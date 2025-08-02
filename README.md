@@ -85,9 +85,9 @@ Frontend :
 cd e-commerce
 npm install
 
-3. Create Environment Variables - 
-In server/.env:
+3. Create Environment Variables -
 
+In server/.env:
 PORT=3000
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret_key
