@@ -38,7 +38,7 @@ A full-featured, responsive E-Commerce website built with the **MERN stack** (Mo
 **Deployment -**
 - Vercel (Frontend + Backend)
 
-📦 root
+📦 root - 
 ├── client/ # React Frontend
 │ ├── components/
 │ ├── pages/
