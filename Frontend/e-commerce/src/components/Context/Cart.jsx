@@ -7,12 +7,13 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
   const { user, loading } = useAuth();
 
   const API_URL = import.meta.env.VITE_API_BASE_URL
 
   const fetchCart = async function () {
+    setLoader(true)
     try {
       const response = await axios.get(`${API_URL}/cart`, {
         withCredentials: true,
@@ -21,6 +22,8 @@ export const CartProvider = ({ children }) => {
       setLoader(false);
     } catch (error) {
       console.log(`Error in Fetching Cart: `, error);
+    }finally{
+      setLoader(false)
     }
   };
 
@@ -34,7 +37,12 @@ export const CartProvider = ({ children }) => {
     }
   }, [user, loading]);
 
+   useEffect(() => {
+    
+  }, [cart]);
+
   const addCart = async (productId, quantity) => {
+    setLoader(true)
     try {
       const response = await axios.post(
         `${API_URL}/cart/add`,
@@ -51,11 +59,13 @@ export const CartProvider = ({ children }) => {
       fetchCart()
     } catch (error) {
       console.log(`Error in Adding to Cart: `, error)
-
+    }finally{
+      setLoader(false)
     }
   };
 
   const updateQuantity = async (productId, quantity) => {
+    setLoader(true)
     try {
       const response = await axios.put(
         `${API_URL}/cart/update/${productId}`,
@@ -67,10 +77,13 @@ export const CartProvider = ({ children }) => {
       fetchCart()
     } catch (error) {
       console.log(`Error in Updating Quantity: `, error);
+    }finally{
+      setLoader(false)
     }
   };
 
   const removeCart = async (productId) => {
+    setLoader(true)
     try {
       const response = await axios.delete(
         `${API_URL}/cart/remove/${productId}`,
@@ -81,6 +94,8 @@ export const CartProvider = ({ children }) => {
       fetchCart()
     } catch (error) {
       console.log(`Error in Removing to Cart: `, error);
+    }finally{
+      setLoader(false)
     }
   };
 

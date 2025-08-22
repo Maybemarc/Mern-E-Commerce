@@ -40,7 +40,7 @@ function Navbar() {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
-  if (loading) return <Loader />;
+  // if (loading) return <Loader />;
 
   return (
     <div className="Navbar_Box" id="Navbar_Area">
@@ -59,7 +59,7 @@ function Navbar() {
           </div> */}
           <div>
             <Link to="/products">
-              <h2>Explore</h2>
+              <h2 className="explore" >Explore</h2>
             </Link>
           </div>
         </div>

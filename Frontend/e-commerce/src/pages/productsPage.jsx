@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../components/Context/AuthProvider";
 import { useCart } from "../components/Context/Cart";
 import FollowOns from "../components/FollowOns";
+import Loader from "../components/LoadPage";
 
 function ProductsPage() {
   const { user, loading } = useAuth();
@@ -18,10 +19,12 @@ function ProductsPage() {
   const [priceLimit, setPriceLimit] = useState(5000);
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const navigate = useNavigate();
+  const [fetching,setFetching] = useState(false)
 
   const API_URL = import.meta.env.VITE_API_BASE_URL
 
   const fetchProducts = async () => {
+    setFetching(true)
     try {
       const res = await axios.get(`${API_URL}/lookup?limit=30`, {
         params: {
@@ -35,16 +38,21 @@ function ProductsPage() {
       setPriceLimit(max);
     } catch (error) {
       console.log(`Error in fetchProducts: `, error);
+    }finally{
+      setFetching(false)
     }
   };
 
   const fetchCategories = async () => {
+      setFetching(true)
     try {
       const res = await axios.get(`${API_URL}/lookup?limit=30`);
       const result = [...new Set(res.data.products.map((c) => c.category))];
       setCategories(result);
     } catch (error) {
       console.log(`Error in fetching Categories: `, error);
+    }finally{
+      setFetching(false)
     }
   };
 
@@ -105,8 +113,8 @@ function ProductsPage() {
 
         <div className="ProductsPage_Container">
           <div className="ProductsPage_Left">
-            {!products
-              ? "No products"
+            {fetching
+              ? <Loader />
               : sortedProducts.map((prod) => (
                   <div className="ProductsPage_Box_Content" key={prod._id}>
                     <Link

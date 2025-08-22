@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../components/Context/Cart";
 import { Link, useNavigate } from "react-router-dom";
 import FollowOns from "../components/FollowOns";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Loader from "../components/LoadPage";
 
 function Cart() {
   const { cart, removeCart, updateQuantity, loader } = useCart();
@@ -15,11 +16,11 @@ function Cart() {
   }, []);
 
   useEffect(() => {
-    const initialQuantities = {};
-    cart.forEach((item) => {
-      initialQuantities[item.productId._id] = item.quantity;
-    });
-    setQuantities(initialQuantities);
+    // const initialQuantities = {};
+    // cart.forEach((item) => {
+    //   initialQuantities[item.productId._id] = item.quantity;
+    // });
+    // setQuantities(initialQuantities);
   }, [cart]);
 
   const handleQuantityChange = async (id, value) => {
@@ -43,7 +44,15 @@ function Cart() {
   // if (loader) return <p>Loading cart...</p>;
   // if (!cart || cart.length === 0) return <p>No products in the cart</p>;
 
+
   return (
+    !loader && !cart || cart.length === 0 ?
+       <div className="No_products">
+               <h2>No products found</h2>
+              <h3>Add a Product</h3>
+              <button onClick={() => navigate("/products")}>+</button>
+               </div>
+      : 
     <div className="Cart_Overall">
       <div className="Cart_Container">
         <div className="Cart_And_Order">
@@ -62,16 +71,18 @@ function Cart() {
             <div className="Cart_Header ">Quantity</div>
             <div className="Cart_Header ">SubTotal</div>
             <div className="Cart_Header "></div>
-            {!cart || cart.length === 0 ? (
-              <div className="No_products">
-                <h2>No products found</h2>
-                <h3>Add a Product</h3>
-                <button onClick={() => navigate("/products")}>+</button>
-              </div>
+            {loader ? (
+              // <div className="No_products">
+              //   <h2>No products found</h2>
+              //   <h3>Add a Product</h3>
+              //   <button onClick={() => navigate("/products")}>+</button>
+              // </div>
+                <Loader/>
             ) : (
               cart.map((item) => (
-                <>
+                <React.Fragment key={item._id} >
                   <div className="Cart_Product">
+                    
                     <img src={item.productId.imageUrl} width="20%" />
                     <div className="Cart_Details">
                       <p className="Cart_Details_Name">{item.productId.name}</p>
@@ -88,7 +99,7 @@ function Cart() {
                     </div>
                   </div>
                   <div className="Cart_Quantity">
-                    <input
+                 <input
                       type="number"
                       min="1"
                       className="Range_input"
@@ -96,6 +107,7 @@ function Cart() {
                       onChange={(e) =>
                         handleQuantityChange(item.productId._id, e.target.value)
                       }
+                      disabled={loader}
                     />
                   </div>
                   <div className="Cart_Price">
@@ -111,7 +123,7 @@ function Cart() {
                   >
                     <DeleteIcon style={{ color: "red" }} />
                   </div>
-                </>
+                </React.Fragment>
               ))
             )}
           </div>

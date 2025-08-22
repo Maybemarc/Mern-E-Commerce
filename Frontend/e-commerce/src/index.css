@@ -78,6 +78,15 @@ body {
 
 }
 
+.explore{
+  color: black;
+}
+
+
+.explore:hover{
+  color: black;
+}
+
 .Nav_Components {
   display: flex;
   justify-content: space-between;
@@ -1198,12 +1207,24 @@ body {
   text-align: start;
 }
 
+.Specific_Product_Details > p{
+  font-weight: 500;
+}
+
+
 .Cart_Content{
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
 }
+
+.category_Small{
+  font-size: medium;
+  color: grey;
+  font-weight: bold;
+}
+
 .quantity-input {
   width: 20%;
   height: 40px;
@@ -2045,7 +2066,7 @@ body {
 /*///////////////////Footer//////////////*/
 
 .Footer_Container{
-  background-color: white;
+  background-color: #e0f2f1;
   margin-top: 5px;
 }
 

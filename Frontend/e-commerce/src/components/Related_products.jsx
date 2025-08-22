@@ -32,7 +32,7 @@ function Related(props) {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [Related]);
 
   return (
     <div className="Related_Products">
@@ -47,9 +47,9 @@ function Related(props) {
             <Link
               to={`/productDetail/${prod._id}`}
               className="Related_Links"
-              onClick={() => {
-                window.location.href = `/productDetail/${prod._id}`;
-              }}
+              // onClick={() => {
+              //   window.location.href = `/productDetail/${prod._id}`;
+              // }}
             >
               <div className="Related_Box">
                 <p className="Related_Percentage">

@@ -46,13 +46,13 @@ const API_URL = import.meta.env.VITE_API_BASE_URL
 
   useEffect(() => {
     SingleProduct();
-  }, []);
+  }, [id]);
 
   const discountedPrice = (price, discounted) => price * (1 - discounted / 100);
 
   return (
     <div>
-      <h1 className="SpecificProduct_Header">SpecificProduct</h1>
+      <h1 className="SpecificProduct_Header">ProductDetail</h1>
       {spinner ? (
         <p>Loading... </p>
       ) : (
@@ -62,12 +62,14 @@ const API_URL = import.meta.env.VITE_API_BASE_URL
           </div>
           <div className="Specific_Product_Details">
             <h1>{item.name}</h1>
-            <h2>{item.category}</h2>
-            <p>{item.discountPercentage}% OFF</p>
+            <h2><span className="category_Small" >Category - </span> {item.category}</h2>
+            <p><span className="category_Small" >Discount - </span> {item.discountPercentage}% OFF</p>
             <p>
+              <span className="category_Small" >Price - </span>
               ₹{discountedPrice(item.price, item.discountPercentage).toFixed(0)}
             </p>
-            <p style={{ textDecoration: "line-through" }}>{item.price}</p>
+            <p style={{ textDecoration: "line-through" }}>
+                      <span className="category_Small" >Origninal Price - </span>{item.price}</p>
             <p> {item.description}</p>
             <div className="Cart_Content">
               <input
