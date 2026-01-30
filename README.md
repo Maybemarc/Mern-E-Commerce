@@ -4,7 +4,7 @@ A full-featured, responsive E-Commerce website built with the **MERN stack** (Mo
 
 ---
 
-## ✨ Features : 
+## ✨ Features -  
 
 - 🔐 **JWT Authentication** with secure HTTP-only cookies.
 - 🛍️ Users can **browse, filter, and search** products by category.
